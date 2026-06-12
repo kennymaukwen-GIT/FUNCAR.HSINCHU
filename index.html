@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>FUN CAR 貿鑫國際車業 | 新竹外匯車買賣・進口新古車</title>
+<meta name="description" content="貿鑫國際車業 FUN CAR 專營進口外匯車買賣，嚴選五年內優質外匯車，提供 Benz / BMW / Porsche / Mini 等豪華品牌車款。新竹外匯車推薦。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@200;300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=6">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header transparent">
+  <div class="header-inner">
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+      <span class="menu-icon"><span></span><span></span><span></span></span>
+      <span class="menu-text">首頁</span>
+    </button>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="FUN CAR" class="logo-img">
+    </a>
+    <div class="header-spacer">貿鑫國際車業</div>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <button class="menu-close" aria-label="Close">✕</button>
+  <nav class="menu-nav">
+    <a href="index.html" class="active">首頁</a>
+    <a href="inventory.html">在店車款</a>
+    <a href="sold.html">已售車款</a>
+    <a href="incoming.html">即將到港</a>
+    <a href="services.html">估車收車</a>
+    <a href="maintenance.html">保養資訊</a>
+    <a href="about.html">關於我們</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+</aside>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="videos/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">LUXURY IMPORT AUTOMOBILE</div>
+    <h1 class="hero-title">
+      嚴選進口外匯車<br>
+      <strong>首選 FUN CAR</strong>
+    </h1>
+    <p class="hero-sub">最多的選擇 · 最真實的價錢 · 第一手批發價</p>
+    <div class="hero-actions">
+      <a href="inventory.html" class="btn btn-primary">瀏覽在店車款</a>
+      <a href="contact.html" class="btn btn-outline">預約賞車</a>
+    </div>
+  </div>
+</section>
+
+<!-- FIND YOUR DREAM MODEL -->
+<section class="finder">
+  <div class="finder-inner">
+    <div class="section-eyebrow">FIND YOUR DREAM MODEL</div>
+    <h2 class="finder-title">尋找你的<strong>夢想車款</strong></h2>
+    <div class="finder-controls">
+      <div class="finder-field">
+        <label class="finder-label">品牌 / BRAND</label>
+        <div class="cselect" data-cselect="brand">
+          <button type="button" class="cselect-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="cselect-value">所有品牌</span>
+            <svg class="cselect-caret" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <ul class="cselect-menu" role="listbox"></ul>
+        </div>
+      </div>
+      <div class="finder-field">
+        <label class="finder-label">型號 / MODEL</label>
+        <div class="cselect" data-cselect="model">
+          <button type="button" class="cselect-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="cselect-value">所有型號</span>
+            <svg class="cselect-caret" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <ul class="cselect-menu" role="listbox"></ul>
+        </div>
+      </div>
+      <button type="button" class="finder-btn" id="finderSearch">搜尋車款 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST CARS CAROUSEL -->
+<section class="section latest">
+  <div class="latest-head">
+    <div>
+      <div class="section-eyebrow">LATEST ARRIVALS</div>
+      <h2 class="section-title">最新<strong>車款</strong></h2>
+    </div>
+    <div class="carousel-controls">
+      <button type="button" class="carousel-arrow" data-carousel-prev aria-label="上一張">‹</button>
+      <button type="button" class="carousel-arrow" data-carousel-next aria-label="下一張">›</button>
+    </div>
+  </div>
+  <div class="carousel-track" data-car-grid="in-stock"></div>
+  <div class="latest-foot">
+    <a href="inventory.html" class="discover-link">查看全部車款 →</a>
+  </div>
+</section>
+
+<!-- COMING SOON (即將到港) -->
+<section class="section-alt news-band">
+  <div class="section-alt-inner">
+    <div class="latest-head">
+      <div>
+        <div class="section-eyebrow">COMING SOON</div>
+        <h2 class="section-title">即將<strong>到港</strong></h2>
+      </div>
+      <a href="incoming.html" class="discover-link">查看全部 →</a>
+    </div>
+    <div class="coming-features" data-coming-features></div>
+  </div>
+</section>
+
+<!-- ALL CARS / SELL YOUR CARS -->
+<section class="cta-split">
+  <a href="inventory.html" class="cta-block cta-block-cars">
+    <div class="cta-block-inner">
+      <div class="section-eyebrow light">INVENTORY</div>
+      <h3 class="cta-block-title">ALL CARS</h3>
+      <p class="cta-block-desc">瀏覽所有在店與已售車款</p>
+      <span class="discover-link light">查看全部 →</span>
+    </div>
+  </a>
+  <a href="services.html" class="cta-block cta-block-sell">
+    <div class="cta-block-inner">
+      <div class="section-eyebrow light">APPRAISAL & PURCHASE</div>
+      <h3 class="cta-block-title">SELL YOUR CARS</h3>
+      <p class="cta-block-desc">專業鑑價 · 公道收購您的愛車</p>
+      <span class="discover-link light">了解更多 →</span>
+    </div>
+  </a>
+</section>
+
+<!-- ABOUT (關於我們, ATELIER style) -->
+<section class="atelier">
+  <div class="atelier-media">
+    <img src="images/showroom/showroom.jpg" alt="FUN CAR 貿鑫國際車業 展間">
+  </div>
+  <div class="atelier-content">
+    <div class="section-eyebrow">ABOUT FUN CAR</div>
+    <h2 class="section-title">關於<strong>我們</strong></h2>
+    <p class="atelier-desc">FUN CAR 貿鑫國際車業，專營進口外匯車買賣。我們在加拿大、美國、日本、歐洲、韓國皆設有專屬團隊駐點，第一線掌握車源與車況，嚴選五年內的優質外匯車，讓每一位客戶都能以第一手批發價，擁有一輛狀況如新的豪華進口車。</p>
+    <a href="about.html" class="btn btn-outline">了解更多</a>
+  </div>
+</section>
+
+<!-- GET IN TOUCH (聯絡我們) -->
+<section class="section get-in-touch">
+  <div class="git-grid">
+    <div class="git-content">
+      <div class="section-eyebrow">GET IN TOUCH</div>
+      <h2 class="section-title">聯絡<strong>我們</strong></h2>
+      <p class="git-desc">不論您想買車、賣車，或只是想來店看看，FUN CAR 都歡迎您的到來。歡迎來電或線上預約，我們將竭誠為您服務。</p>
+      <div class="git-actions">
+        <a href="tel:0922782597" class="btn btn-outline">撥打 0922-782-597</a>
+        <a href="contact.html" class="btn btn-primary">線上聯絡</a>
+      </div>
+    </div>
+    <div class="git-media">
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.2!2d120.9544093!3d24.8258691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835b52f19d0c1%3A0x908505648da1b82a!2z6LK_6Y6r5ZyL6Zqb6LuK5qWt!5e0!3m2!1szh-TW!2stw!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- SOLD CARS CAROUSEL (已售車款) -->
+<section class="section latest">
+  <div class="latest-head">
+    <div>
+      <div class="section-eyebrow">SOLD CARS</div>
+      <h2 class="section-title">已售<strong>車款</strong></h2>
+    </div>
+    <div class="carousel-controls">
+      <button type="button" class="carousel-arrow" data-carousel-prev aria-label="上一張">‹</button>
+      <button type="button" class="carousel-arrow" data-carousel-next aria-label="下一張">›</button>
+    </div>
+  </div>
+  <div class="carousel-track" data-car-grid="sold"></div>
+  <div class="latest-foot">
+    <a href="sold.html" class="discover-link">查看全部已售車款 →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">FUN CAR</div>
+        <p class="footer-desc">貿鑫國際車業 · 專營進口外匯車買賣。嚴選歐美日韓頂級品牌車款，給您最安心的購車體驗。</p>
+      </div>
+      <div>
+        <div class="footer-heading">車輛</div>
+        <ul class="footer-list">
+          <li><a href="inventory.html">在店車款</a></li>
+          <li><a href="sold.html">已售車款</a></li>
+          <li><a href="incoming.html">即將到港</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-list">
+          <li><a href="services.html">估車收車</a></li>
+          <li><a href="maintenance.html">保養資訊</a></li>
+          <li><a href="about.html">關於我們</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">聯絡</div>
+        <ul class="footer-list">
+          <li><a href="tel:0922782597">0922-782-597</a></li>
+          <li><a href="mailto:michelle@maukwen.com.tw">michelle@maukwen.com.tw</a></li>
+          <li>新竹市北區吉羊路22巷55之3號</li>
+          <li>週一至週日 09:00–23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 FUN CAR 貿鑫國際車業. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/FUN-CAR-%E8%B2%BF%E9%91%AB%E5%9C%8B%E9%9A%9B%E8%BB%8A%E6%A5%AD-100063469527149/" target="_blank" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/fun_car_hsinchu88/" target="_blank" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://maps.app.goo.gl/r1JD8GTU861ZrX2D7" target="_blank" aria-label="Google Map">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cars.js?v=6"></script>
+<script src="js/main.js?v=6"></script>
+</body>
+</html>
