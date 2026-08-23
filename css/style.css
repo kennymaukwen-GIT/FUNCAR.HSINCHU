@@ -1082,6 +1082,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   object-fit: cover;
   display: block;
 }
+.about-eyebrow {
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
 .about-content h2 {
   font-weight: 200;
   font-size: clamp(28px, 4vw, 44px);
@@ -1094,6 +1102,36 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 16px;
   line-height: 1.9;
   margin-bottom: 20px;
+}
+.about-subhead {
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 40px 0 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.about-promises {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.about-promises li {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent);
+}
+.about-promises li strong {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 
 .stats-row {
