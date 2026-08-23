@@ -63,13 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // Header scroll state
+  // Header scroll state: solid background on scroll, hide on scroll-down / show on scroll-up
   const header = document.querySelector('.header');
   if (header) {
+    let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) header.classList.add('scrolled');
+      const y = window.scrollY;
+      if (y > 20) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
-    });
+
+      // Hide when scrolling down past the header, reveal when scrolling up
+      if (y > lastScrollY && y > 120) {
+        header.classList.add('header-hidden');
+      } else if (y < lastScrollY) {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
   }
 
   // Render car grids (if the page has one of these containers)
@@ -92,6 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Homepage "find your dream model" selector
   initFinder();
+
+  // Homepage brand showcase
+  renderLatestShowcase('[data-showcase="in-stock"]');
+  initShowcase();
+
+  // Finder section: black by default, fades to white when scrolled into view
+  initFinderReveal();
 
   // Latest cars horizontal carousel arrows
   initLatestCarousel();
@@ -138,12 +155,6 @@ function renderCarGrid(selector, status, limit) {
         <div class="car-card-body">
           <div class="car-card-title">${car.title}</div>
           <div class="car-card-subtitle">${car.subtitle}</div>
-          <div class="car-card-specs">
-            <div class="car-card-spec">⚙️ ${car.specs.transmission}</div>
-            <div class="car-card-spec">🏁 ${car.specs.mileage}</div>
-            <div class="car-card-spec">⛽ ${car.specs.fuel}</div>
-            <div class="car-card-spec">📍 ${car.specs.location}</div>
-          </div>
           <div class="car-card-price">
             <span class="car-card-price-label">${priceLabel}</span>
             ${priceVal}
@@ -473,6 +484,94 @@ function initFinder() {
     }
   };
   searchBtn && searchBtn.addEventListener('click', go);
+}
+
+// ============================================
+// Homepage latest-cars showcase (big image cards, Porsche style)
+// ============================================
+// Brands shown in the homepage showcase.
+// To use real logos: drop a file in images/brands/ and set `logo` to its path
+// (white / transparent PNG or SVG works best on the black cards).
+// `white: true` recolors a dark logo to white so it shows on the black card.
+const SHOWCASE_BRANDS = [
+  { label: 'MINI',          brand: 'mini',    logo: 'images/brands/mini.png',        white: true },
+  { label: 'PORSCHE',       brand: 'porsche', logo: 'images/brands/porsche.png',     white: false, wide: true },
+  { label: 'MERCEDES-BENZ', brand: 'benz',    logo: 'images/brands/benz.png',        white: false },
+  { label: 'BMW',           brand: 'bmw',     logo: 'images/brands/bmw.png',         white: true },
+  { label: 'BENTLEY',       brand: null,      logo: 'images/brands/bentley.png',     white: true },
+  { label: 'ROLLS-ROYCE',   brand: null,      logo: 'images/brands/rolls-royce.png', white: false },
+  { label: 'FERRARI',       brand: null,      logo: 'images/brands/ferrari.png',     white: true },
+  { label: 'LAMBORGHINI',   brand: null,      logo: 'images/brands/lamborghini.png', white: true },
+  { label: 'MCLAREN',       brand: null,      logo: 'images/brands/mclaren.png',     white: true },
+];
+
+function renderLatestShowcase(selector) {
+  const track = document.querySelector(selector);
+  if (!track) return;
+
+  const section = track.closest('.showcase');
+  const dotsEl = section ? section.querySelector('[data-showcase-dots]') : null;
+
+  track.innerHTML = SHOWCASE_BRANDS.map(b => {
+    const href = b.brand ? `inventory.html?brand=${b.brand}` : 'inventory.html';
+    const cls = 'brand-logo' + (b.white ? ' brand-logo--white' : '') + (b.gray ? ' brand-logo--gray' : '') + (b.wide ? ' brand-logo--wide' : '');
+    const inner = b.logo
+      ? `<img class="${cls}" src="${b.logo}" alt="${b.label}">`
+      : `<span class="brand-logo-text">${b.label}</span>`;
+    return `
+      <div class="showcase-slide" data-title="${b.label}">
+        <a class="showcase-card brand-card" href="${href}" aria-label="${b.label}">
+          ${inner}
+        </a>
+      </div>`;
+  }).join('');
+
+  if (dotsEl) {
+    dotsEl.innerHTML = SHOWCASE_BRANDS.map((b, i) =>
+      `<button class="showcase-dot${i === 0 ? ' active' : ''}" data-idx="${i}" aria-label="${b.label}"></button>`
+    ).join('');
+  }
+}
+
+function initFinderReveal() {
+  const sections = document.querySelectorAll('.finder, .showcase');
+  if (!sections.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      e.target.classList.toggle('is-active', e.isIntersecting && e.intersectionRatio >= 0.3);
+    });
+  }, { threshold: [0, 0.3, 0.6] });
+  sections.forEach(s => io.observe(s));
+}
+
+function initShowcase() {
+  document.querySelectorAll('.showcase').forEach(section => {
+    const track = section.querySelector('.showcase-track');
+    if (!track) return;
+    const slides = [...track.querySelectorAll('.showcase-slide')];
+    const dots = [...section.querySelectorAll('.showcase-dot')];
+    if (!slides.length) return;
+
+    const setActive = (idx) => {
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio >= 0.6) {
+          const idx = slides.indexOf(e.target);
+          if (idx >= 0) setActive(idx);
+        }
+      });
+    }, { root: track, threshold: [0.6] });
+    slides.forEach(s => io.observe(s));
+
+    dots.forEach((d, i) => d.addEventListener('click', () => {
+      const s = slides[i];
+      const left = s.offsetLeft - (track.clientWidth - s.clientWidth) / 2;
+      track.scrollTo({ left, behavior: 'smooth' });
+    }));
+  });
 }
 
 // ============================================

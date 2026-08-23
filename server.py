@@ -1,7 +1,8 @@
 import http.server
+import os
 import socketserver
 
-PORT = 8765
+PORT = int(os.environ.get("PORT", 8765))
 
 
 class NoCacheHandler(http.server.SimpleHTTPRequestHandler):

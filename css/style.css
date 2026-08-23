@@ -60,6 +60,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: rgba(10, 10, 11, 0.94);
   box-shadow: 0 1px 0 var(--border);
 }
+.header.header-hidden {
+  transform: translateY(-100%);
+}
 .header-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -259,7 +262,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: clamp(40px, 7vw, 82px);
   line-height: 1.1;
   letter-spacing: -1px;
-  margin-bottom: 20px;
+  margin-bottom: 44px;
   color: #fff;
 }
 .hero-title strong { font-weight: 600; }
@@ -271,6 +274,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 48px;
 }
 .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: #fff;
+  opacity: 0.8;
+  display: inline-flex;
+  transition: opacity 0.3s ease;
+  animation: heroScrollBounce 1.8s ease-in-out infinite;
+}
+.hero-scroll:hover { opacity: 1; }
+@keyframes heroScrollBounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
 
 /* ============================================
    BUTTONS
@@ -286,6 +306,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: 3px;
   text-transform: uppercase;
   border: 1px solid transparent;
+  border-radius: 10px;
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
@@ -394,6 +415,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .car-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
+  border-radius: 16px;
   overflow: hidden;
   transition: var(--transition);
   display: flex;
@@ -542,6 +564,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .service-card {
   border: 1px solid var(--border);
+  border-radius: 16px;
   padding: 48px 36px;
   transition: var(--transition);
 }
@@ -1118,6 +1141,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .page-hero { padding: 140px 20px 60px; }
   .hero-actions { flex-direction: column; align-items: center; }
   .hero-actions .btn { width: 100%; max-width: 280px; }
+
+  /* Mobile hero: full-height video, fading out at the bottom, single button */
+  .hero-video,
+  .hero-bg {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 360px), transparent calc(100% - 160px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 360px), transparent calc(100% - 160px), transparent 100%);
+  }
+  .hero-actions .btn-primary { display: none; }
 }
 
 /* ============================================
@@ -1126,6 +1157,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .header.transparent:not(.scrolled) {
   background: transparent;
   border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* Black-to-transparent gradient that dissolves the header into the video below */
+.header.transparent:not(.scrolled)::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 .header.transparent:not(.scrolled) .logo-img { filter: none; }
 .header.transparent:not(.scrolled) .menu-icon span { background: #fff; }
@@ -1138,10 +1181,56 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    FIND YOUR DREAM MODEL
    ============================================ */
 .finder {
-  background: var(--bg-secondary);
-  padding: 100px 32px;
-  border-bottom: 1px solid var(--border);
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom: none;
+  transition: background 2s ease;
 }
+.finder.is-active { background: #fff; }
+.finder-boxes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.finder-box {
+  flex: 1;
+  position: relative;
+  background: #000;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 28px;
+  color: #fff;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.finder-box:hover { transform: translateY(-3px); }
+.finder-box-title {
+  font-family: var(--font-cn);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.finder-box-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+.finder-box-arrow svg { width: 15px; height: 15px; }
+.finder-box:hover .finder-box-arrow { background: rgba(255,255,255,0.32); }
 .finder-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -1364,9 +1453,184 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ============================================
    ALL CARS / SELL YOUR CARS split blocks
    ============================================ */
+/* ============================================
+   LATEST CARS SHOWCASE (Porsche-style big cards)
+   ============================================ */
+.showcase {
+  background: #fff;
+  padding: 56px 0 72px;
+  transition: background 2s ease;
+}
+.showcase.is-active { background: #000; }
+/* Active (scrolled-in) = black section, white cards, black logos, light text */
+.showcase.is-active .brand-card { background: #fff; }
+.showcase.is-active .brand-logo { filter: brightness(0); }
+.showcase.is-active .showcase-title { color: #fff; }
+.showcase.is-active .showcase-dot { background: rgba(255,255,255,0.3); }
+.showcase.is-active .showcase-dot.active { background: #fff; }
+.showcase.is-active .discover-link { color: #fff; border-bottom-color: #fff; }
+.showcase-eyebrow {
+  text-align: center;
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.showcase-title {
+  text-align: center;
+  font-family: var(--font-en);
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #111;
+  margin: 0 0 28px;
+  padding: 0 20px;
+  min-height: 1.15em;
+}
+.showcase-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+  scrollbar-width: none;
+}
+.showcase-track::-webkit-scrollbar { display: none; }
+.showcase-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+.showcase-card {
+  position: relative;
+  height: 62vh;
+  max-height: 620px;
+  min-height: 440px;
+  margin: 0 20px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #111;
+}
+.showcase-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.showcase-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.85) 100%);
+}
+.showcase-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  color: #fff;
+}
+.showcase-pill {
+  background: rgba(255,255,255,0.18);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 15px;
+  line-height: 1;
+}
+.showcase-desc {
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 400;
+  margin: 0;
+}
+.showcase-explore {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  color: #111;
+  padding: 17px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: background 0.3s ease;
+}
+.showcase-explore:hover { background: rgba(255,255,255,0.85); color: #111; }
+/* Brand cards: pure black, logo (or brand name) centered */
+/* 關於我們 finder box: showroom photo background */
+.finder-box-about {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.7) 100%),
+    url('../images/showroom/showroom.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 24px;
+  transition: background 2s ease;
+}
+.brand-card::after { display: none; }
+.brand-logo {
+  transition: filter 2s ease;
+  width: 44%;
+  height: 19%;
+  object-fit: contain;
+  object-position: center;
+}
+.brand-logo--white { filter: brightness(0) invert(1); }
+.brand-logo--gray { filter: grayscale(1); }
+.brand-logo--wide { width: 78%; height: auto; }
+.brand-logo-text {
+  color: #fff;
+  font-family: var(--font-en);
+  font-size: clamp(24px, 6vw, 42px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 1.25;
+}
+.showcase-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 28px;
+}
+.showcase-dot {
+  width: 8px; height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.showcase-dot.active {
+  width: 26px;
+  background: #111;
+}
+.showcase .latest-foot {
+  text-align: center;
+  margin-top: 28px;
+}
+.showcase .discover-link {
+  color: #111;
+  border-bottom-color: #111;
+}
+
 .cta-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 .cta-block {
   position: relative;
