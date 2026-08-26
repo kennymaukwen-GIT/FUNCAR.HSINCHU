@@ -266,6 +266,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: #fff;
 }
 .hero-title strong { font-weight: 600; }
+.hero-lead {
+  display: block;
+  font-size: clamp(16px, 3.4vw, 30px);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
 .hero-sub {
   font-size: clamp(16px, 2vw, 20px);
   color: rgba(255,255,255,0.85);
@@ -1059,6 +1066,168 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 24px;
   display: block;
 }
+/* 專營車款 內容區塊 */
+.specialty-vehicles { padding: 80px 20px 40px; }
+.specialty-vehicles .container { max-width: 900px; margin: 0 auto; }
+.specialty-vehicles .section-header { text-align: center; margin-bottom: 56px; }
+.specialty-vehicles .sub-heading {
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.specialty-vehicles h1 {
+  font-weight: 200;
+  font-size: clamp(24px, 3.6vw, 38px);
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+.specialty-vehicles .intro-lead {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.vehicle-categories { display: flex; flex-direction: column; gap: 24px; }
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+.category-card h2 {
+  font-size: clamp(19px, 2.4vw, 24px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.category-card .tagline {
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.category-card .description {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.9;
+}
+.category-card ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.category-card li {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+.category-card strong { color: var(--text-primary); font-weight: 600; }
+.service-promise {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+.service-promise h3 {
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.service-promise p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+
+/* 認證 / 收購估車 區塊 */
+.inspection-certifications,
+.trade-in-service { padding: 20px 20px 64px; }
+.inspection-certifications .container,
+.trade-in-service .container { max-width: 900px; margin: 0 auto; }
+.block-head { text-align: center; margin-bottom: 48px; }
+.block-head .sub-title {
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.block-head h2 {
+  font-weight: 200;
+  font-size: clamp(22px, 3.2vw, 34px);
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+.block-head .lead-text {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+.cert-badge {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 18px;
+}
+.cert-card h3 {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.cert-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.9; }
+.cert-card strong { color: var(--text-primary); font-weight: 600; }
+.service-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 40px 0 32px;
+}
+.feature-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px;
+}
+.feature-item h4 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+.feature-item p { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .about-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1630,6 +1799,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: background 2s ease;
 }
 .brand-card::after { display: none; }
+/* 各品牌卡背景色(覆蓋黑/白狀態) */
+.showcase .showcase-slide[data-title="FERRARI"] .brand-card     { background: #E12E1C; }
+.showcase .showcase-slide[data-title="ROLLS-ROYCE"] .brand-card { background: #2A1A3E; }
+.showcase .showcase-slide[data-title="BENTLEY"] .brand-card     { background: #1E4A38; }
+.showcase .showcase-slide[data-title="MCLAREN"] .brand-card     { background: #E67E22; }
+.showcase .showcase-slide[data-title="LAMBORGHINI"] .brand-card { background: #000; }
+/* 深色卡片的 logo 用白色 */
+.showcase .showcase-slide[data-title="ROLLS-ROYCE"] .brand-logo,
+.showcase .showcase-slide[data-title="BENTLEY"] .brand-logo,
+.showcase .showcase-slide[data-title="LAMBORGHINI"] .brand-logo {
+  filter: brightness(0) invert(1);
+}
 .brand-logo {
   transition: filter 2s ease;
   width: 44%;
