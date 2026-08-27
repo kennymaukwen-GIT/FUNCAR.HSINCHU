@@ -146,7 +146,7 @@ const CARS = [
     status: 'sold',
     brand: 'mini',
     title: '2024 MINI CLUBMAN',
-    subtitle: 'JCW ALL4',
+    subtitle: 'JCW ALL4 · 新竹外匯車成交',
     folder: 'sold/2024 MY MINI Clubman JCW ALL4',
     photos: [
       'IMG_2744 2.JPG','IMG_2745 2.JPG','IMG_2746 2.JPG','IMG_2747 2.JPG','IMG_2748 2.JPG',
@@ -170,7 +170,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: '2023 BENZ CLA 45s',
-    subtitle: 'AMG',
+    subtitle: 'AMG · 進口車代辦實績',
     folder: 'sold/2023 BENZ CLA 45s AMG',
     photos: [
       'IMG_2837.JPG','IMG_2838.JPG','IMG_2839.JPG','IMG_2840.JPG','IMG_2841.JPG',
@@ -194,7 +194,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: '2025 BENZ GLC 43',
-    subtitle: 'AMG · WHITE',
+    subtitle: 'AMG · WHITE · 新竹外匯休旅成交',
     folder: 'sold/2025 BENZ GLC 43 AMG WHITE',
     photos: [
       'IMG_2714.JPG','IMG_2715.JPG','IMG_2716.JPG','IMG_2718.JPG','IMG_2721.JPG',
@@ -219,7 +219,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ E 200',
-    subtitle: '',
+    subtitle: '外匯車成交紀錄',
     folder: 'sold/BENZ E 200',
     photos: [
       'IMG_2929.JPG','IMG_2930.JPG','IMG_2931.JPG','IMG_2933.JPG','IMG_2934.JPG',
@@ -243,7 +243,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ E53',
-    subtitle: 'AMG',
+    subtitle: 'AMG · 新竹外匯車成交',
     folder: 'sold/BENZ E53',
     photos: [
       'IMG_2920.JPG','IMG_2921.JPG','IMG_2922.JPG','IMG_2923.JPG','IMG_2925.JPG'
@@ -266,7 +266,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLB 250',
-    subtitle: '',
+    subtitle: '進口休旅代辦實績',
     folder: 'sold/BENZ GLB 250',
     photos: [
       'IMG_2955.JPG','IMG_2956.JPG','IMG_2957.JPG','IMG_2958.JPG','IMG_2959.JPG'
@@ -289,7 +289,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLB 35',
-    subtitle: 'AMG',
+    subtitle: 'AMG · 新竹外匯休旅成交',
     folder: 'sold/BENZ GLB 35 AMG',
     photos: [
       'IMG_3014.JPG','IMG_3015.JPG','IMG_3016.JPG','IMG_3017.JPG','IMG_3018.JPG'
@@ -312,7 +312,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLC 43',
-    subtitle: 'COUPE',
+    subtitle: 'COUPE · 進口休旅代辦實績',
     folder: 'sold/BENZ GLC 43 Coupe',
     photos: [
       'IMG_2913.JPG','IMG_2914.JPG','IMG_2915.JPG','IMG_2916.JPG','IMG_2917.JPG'
@@ -335,7 +335,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLE 450',
-    subtitle: 'BLACK',
+    subtitle: 'BLACK · 新竹外匯休旅成交',
     folder: 'sold/BENZ GLE 450 Black',
     photos: [
       'IMG_2937.JPG','IMG_2938.JPG','IMG_2939.JPG','IMG_2940.JPG','IMG_2941.JPG',
@@ -359,7 +359,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLE 450',
-    subtitle: 'COUPE',
+    subtitle: 'COUPE · 進口休旅代辦實績',
     folder: 'sold/BENZ GLE 450 Coupe',
     photos: [
       'IMG_2994.JPG','IMG_2995.JPG','IMG_2996.JPG','IMG_2997.JPG','IMG_2998.JPG'
@@ -382,7 +382,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLE 450',
-    subtitle: 'WHITE',
+    subtitle: 'WHITE · 新竹外匯休旅成交',
     folder: 'sold/BENZ GLE 450 White',
     photos: [
       'IMG_2943.JPG','IMG_2944.JPG','IMG_2945.JPG','IMG_2946.JPG','IMG_2947.JPG',
@@ -406,7 +406,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLE 53',
-    subtitle: 'AMG',
+    subtitle: 'AMG · 進口休旅代辦實績',
     folder: 'sold/BENZ GLE 53 AMG',
     photos: [
       'IMG_3007.JPG','IMG_3008.JPG','IMG_3009.JPG','IMG_3010.JPG','IMG_3012.JPG'
@@ -429,7 +429,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GT 53',
-    subtitle: 'AMG',
+    subtitle: 'AMG · 進口車代辦實績',
     folder: 'sold/BENZ GT53 AMG',
     photos: [
       'IMG_2999.JPG','IMG_3002.JPG','IMG_3003.JPG','IMG_3004.JPG','IMG_3005.JPG',
@@ -453,7 +453,7 @@ const CARS = [
     status: 'sold',
     brand: 'benz',
     title: 'BENZ GLC 300',
-    subtitle: 'COUPE',
+    subtitle: 'COUPE · 新竹外匯休旅成交',
     folder: 'sold/GLC 300 Coupe',
     photos: [
       'IMG_2949.JPG','IMG_2950.JPG','IMG_2951.JPG','IMG_2952.JPG'
@@ -476,7 +476,7 @@ const CARS = [
     status: 'sold',
     brand: 'porsche',
     title: 'PORSCHE MACAN',
-    subtitle: '',
+    subtitle: '進口休旅代辦實績',
     folder: 'sold/PORSCHE Macan',
     photos: [
       'IMG_2968.JPG','IMG_2969.JPG','IMG_2970.JPG','IMG_2971.JPG','IMG_2972.JPG'
@@ -499,7 +499,7 @@ const CARS = [
     status: 'sold',
     brand: 'porsche',
     title: 'PORSCHE MACAN',
-    subtitle: 'S',
+    subtitle: 'S · 新竹外匯休旅成交',
     folder: 'sold/PORSCHE Macan S',
     photos: [
       'IMG_2960.JPG','IMG_2961.JPG','IMG_2963.JPG','IMG_2964.JPG','IMG_2965.JPG',

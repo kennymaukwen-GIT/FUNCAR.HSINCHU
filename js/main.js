@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const BRAND_LABELS = { bmw: 'BMW', porsche: 'PORSCHE', benz: 'MERCEDES-BENZ', mini: 'MINI', other: 'OTHERS' };
 // Fixed brand list / display order
 const BRAND_ORDER = ['bmw', 'porsche', 'benz', 'mini', 'other'];
+// 中文品牌名(SEO 用:圖片 alt、詳情頁 meta)
+const BRAND_ZH = { bmw: 'BMW', porsche: '保時捷', benz: '賓士', mini: 'MINI', other: '進口車' };
 
 // ============================================
 // Render car card grid
@@ -151,7 +153,7 @@ function renderCarGrid(selector, status, limit) {
     return `
       <${tag} ${linkable ? `href="${href}"` : ''} class="car-card" data-brand="${car.brand}">
         <div class="car-card-media">
-          <img class="car-card-img" src="${firstPhoto}" alt="${car.title}">
+          <img class="car-card-img" src="${firstPhoto}" alt="${car.title} ${BRAND_ZH[car.brand] || ''} 新竹外匯車" loading="lazy">
           <div class="car-card-status ${statusClass[car.status]}">${statusLabels[car.status]}</div>
           <div class="car-card-badge">📷 ${car.photos.length}</div>
         </div>
@@ -187,8 +189,36 @@ function renderCarDetail() {
     return;
   }
 
-  // Update page title
-  document.title = `${car.title} ${car.subtitle} | FUN CAR 貿鑫國際車業`;
+  // Update page title + SEO meta (dynamic, per-car)
+  const brandZh = BRAND_ZH[car.brand] || '進口車';
+  const hasKw = /新竹|外匯|進口|代辦/.test(car.subtitle || '');
+  const region = hasKw ? '' : ' · 新竹外匯車';
+  document.title = `${car.title} ${car.subtitle}${region}｜FUN CAR 貿鑫國際車業`;
+
+  const ORIGIN = 'https://www.funcar-hsinchu.com.tw/';
+  const canonUrl = `${ORIGIN}car-detail.html?id=${encodeURIComponent(car.id)}`;
+  const imgAbs = ORIGIN + photoUrl(car, 0);
+  const spec = car.specs || {};
+  const clean = v => (v && v !== '—' && String(v).trim()) ? String(v).trim() : null;
+  const specStr = [clean(spec.year) && clean(spec.year) + '年式', clean(spec.mileage), clean(spec.transmission)].filter(Boolean).join('・');
+  const metaDesc = `貿鑫國際車業 FUN CAR｜${car.title} ${car.subtitle}${specStr ? '，' + specStr : ''}。新竹在地進口外匯車，提供實車照片與車況資訊，歡迎預約新竹展間賞車或線上洽詢 0922-782-597。`;
+
+  const setMeta = (sel, attr, val) => {
+    let el = document.head.querySelector(sel);
+    if (!el) { el = document.createElement('meta'); const [k, v] = attr; el.setAttribute(k, v); document.head.appendChild(el); }
+    el.setAttribute('content', val);
+  };
+  setMeta('meta[name="description"]', ['name', 'description'], metaDesc);
+  setMeta('meta[property="og:description"]', ['property', 'og:description'], metaDesc);
+  setMeta('meta[name="twitter:description"]', ['name', 'twitter:description'], metaDesc);
+  setMeta('meta[property="og:title"]', ['property', 'og:title'], document.title);
+  setMeta('meta[name="twitter:title"]', ['name', 'twitter:title'], document.title);
+  setMeta('meta[property="og:url"]', ['property', 'og:url'], canonUrl);
+  setMeta('meta[property="og:image"]', ['property', 'og:image'], imgAbs);
+  setMeta('meta[name="twitter:image"]', ['name', 'twitter:image'], imgAbs);
+  let canon = document.head.querySelector('link[rel="canonical"]');
+  if (!canon) { canon = document.createElement('link'); canon.setAttribute('rel', 'canonical'); document.head.appendChild(canon); }
+  canon.setAttribute('href', canonUrl);
 
   const statusTextMap = { 'in-stock': '在店車款', 'sold': '已售出', 'coming': '即將到港' };
   const backLinkMap = { 'in-stock': 'inventory.html', 'sold': 'sold.html', 'coming': 'incoming.html' };
@@ -201,7 +231,7 @@ function renderCarDetail() {
   };
 
   const slidesHtml = car.photos.map((_, i) =>
-    `<div class="slide${i === 0 ? ' active' : ''}"><img src="${photoUrl(car, i)}" alt="${car.title} 照片 ${i+1}"></div>`
+    `<div class="slide${i === 0 ? ' active' : ''}"><img src="${photoUrl(car, i)}" alt="${car.title} ${car.subtitle} ${brandZh}新竹外匯車 實車照片 ${i+1}"></div>`
   ).join('');
 
   const dotsHtml = car.photos.map((_, i) =>
@@ -496,6 +526,19 @@ function initFinder() {
 // To use real logos: drop a file in images/brands/ and set `logo` to its path
 // (white / transparent PNG or SVG works best on the black cards).
 // `white: true` recolors a dark logo to white so it shows on the black card.
+// 品牌 logo 的中文 SEO 替代文字(alt / aria-label 用;不影響畫面與 data-title 配色)
+const BRAND_SEO_ALT = {
+  'MINI': 'MINI 外匯車代辦',
+  'PORSCHE': '保時捷 Porsche 客製化尋車',
+  'MERCEDES-BENZ': '賓士 Mercedes-AMG 進口外匯車',
+  'BMW': 'BMW 進口外匯車',
+  'BENTLEY': 'Bentley 賓利進口車',
+  'ROLLS-ROYCE': 'Rolls-Royce 勞斯萊斯進口車',
+  'FERRARI': 'Ferrari 法拉利進口車',
+  'LAMBORGHINI': 'Lamborghini 藍寶堅尼進口車',
+  'MCLAREN': 'McLaren 麥拉倫進口車',
+};
+
 const SHOWCASE_BRANDS = [
   { label: 'MINI',          brand: 'mini',    logo: 'data:image/png;base64,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',        white: true },
   { label: 'PORSCHE',       brand: 'porsche', logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAVCAMAAADLoSOWAAABWGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kLFLw1AQxr9WpaB1EB0cHDKJQ5SSCro4tBVEcQhVweqUvqapkMZHkiIFN/+Bgv+BCs5uFoc6OjgIopPo5uSk4KLleS+JpCJ6j+N+fO+74zggOW5wbvcDqDu+W1zKK5ulLSX1jAS9IAzm8Zyur0r+rj/j/T703k7LWb///43Biukxqp+UGcZdH0ioxPqezyXvE4+5tBRxS7IV8onkcsjngWe9WCC+JlZYzagQvxCr5R7d6uG63WDRDnL7tOlsrMk5lBNYxA48cNgw0IQCHdk//LOBv4BdcjfhUp+FGnzqyZEiJ5jEy3DAMAOVWEOGUpN3ju53F91PjbWDJ2ChI4S4iLWVDnA2Rydrx9rUPDAyBFy1ueEagdRHmaxWgddTYLgEjN5Qz7ZXzWrh9uk8MPAoxNskkDoEui0hPo6E6B5T8wNw6XwBA6diE8HYWhMAAABgUExURf///wAAAP///////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACTZXvoAAAAgdFJOU/0ABFCqNG7OkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbmcw7AAAAj9JREFUeNrVmdGWwyAIRCMo8v9fvDGmxtgNjNnm9Ow89YGiXimOdomLr5gChVUUkhuuVGIpKJA3yytvYH8eugUjc1jWvPsMuI7wrnWaWyi1T8iEoahUCSQkIVGZQITybrTWL0BbVufAQKgWWLENYMFKn4eVCwBKUGxZFAqrzhUqwz0vgXswAyt9FlapVgoCA4BhcYmd2QT5OqzIJ0kvPRZVwSqP+i02enklt1ipDWwTXyodFRvZFt2BxZ7Ssk/ZkLa9yrUfGIpnWGZemYg9lhjrCtFIoWudYWU/Z4VlpSTZfwM7LLZi+QzAz3tUbCJPHSw/tG0BXeIcYLnj0w7LSFlTdbCsWB6rBYpVt2Krv+gqi/5eWemJyuL7sMDKqk07x7O0qbQyCnQH1pIvtQw9axz/XUDPknPPmqssqGdB9o0D3YGFeJe50zCLoeE0nIEVjbTt5ER9VncafhUW4LPoDiyQAJGixvg/wJJtVz8Pi9ulU0qPumoWeTC7OKzrRqRxgOW2LMVgae0Xn4YV6ZXLWTsNZnfiNPSSzp+Gdu3FbZYB8VkyBSsnqot2HU48X2JwnzVhSlGfpe7IocGSCQd/PVXO7YUCUR4rC3bw8HUH91n2uPv2v+6Gl/e3t7uhYR2od8PJFuvQs9T5wr27YfIEmFKaPF+6RRl5a3vbah99T8JfPh59deBASGHzMvmeZV6jcgOLwdLqMv4JLPCtuHspNWFp+8nSguYFd+wpWBGGVbZV8tQbvG8zBIWlhP8P8BSsH7aZHs4ZEyTrAAAAAElFTkSuQmCC',     white: false, wide: true },
@@ -518,12 +561,13 @@ function renderLatestShowcase(selector) {
   track.innerHTML = SHOWCASE_BRANDS.map(b => {
     const href = b.brand ? `inventory.html?brand=${b.brand}` : 'inventory.html';
     const cls = 'brand-logo' + (b.white ? ' brand-logo--white' : '') + (b.gray ? ' brand-logo--gray' : '') + (b.wide ? ' brand-logo--wide' : '');
+    const label = BRAND_SEO_ALT[b.label] || b.label;
     const inner = b.logo
-      ? `<img class="${cls}" src="${b.logo}" alt="${b.label}">`
+      ? `<img class="${cls}" src="${b.logo}" alt="${label}">`
       : `<span class="brand-logo-text">${b.label}</span>`;
     return `
       <div class="showcase-slide" data-title="${b.label}">
-        <a class="showcase-card brand-card" href="${href}" aria-label="${b.label}">
+        <a class="showcase-card brand-card" href="${href}" aria-label="${label}">
           ${inner}
         </a>
       </div>`;

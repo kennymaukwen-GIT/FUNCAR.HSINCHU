@@ -1413,13 +1413,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hero-actions { flex-direction: column; align-items: center; }
   .hero-actions .btn { width: 100%; max-width: 280px; }
 
-  /* Mobile hero: full-height video, fading out at the bottom, single button */
+  /* Mobile hero: full-height video, fading out at the bottom */
   .hero-video,
   .hero-bg {
     -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 360px), transparent calc(100% - 160px), transparent 100%);
     mask-image: linear-gradient(to bottom, #000 calc(100% - 360px), transparent calc(100% - 160px), transparent 100%);
   }
-  .hero-actions .btn-primary { display: none; }
 }
 
 /* ============================================
