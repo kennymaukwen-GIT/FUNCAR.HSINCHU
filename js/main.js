@@ -110,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Finder section: black by default, fades to white when scrolled into view
   initFinderReveal();
 
+  // 客戶評價跑馬燈:自動捲動 + 可手動左右滑動/拖曳
+  initReviewsMarquee();
+
   // Latest cars horizontal carousel arrows
   initLatestCarousel();
 
@@ -542,6 +545,66 @@ function initFinderReveal() {
     });
   }, { threshold: [0, 0.3, 0.6] });
   sections.forEach(s => { if (!s.hasAttribute('data-no-reveal')) io.observe(s); });
+}
+
+function initReviewsMarquee() {
+  document.querySelectorAll('.reviews-marquee-wrapper').forEach(wrap => {
+    const track = wrap.querySelector('.reviews-marquee-track');
+    if (!track) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const half = () => track.scrollWidth / 2;
+    let paused = reduce;
+    let idleTimer;
+    let last = performance.now();
+
+    // 自動推進(原生 scrollLeft),到一半時無縫跳回起點
+    function tick(now) {
+      const dt = Math.min(now - last, 50); last = now;
+      if (!paused) {
+        wrap.scrollLeft += dt * 0.045;               // 約 45px/秒
+        if (wrap.scrollLeft >= half()) wrap.scrollLeft -= half();
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // 手動捲動時也維持無縫循環
+    wrap.addEventListener('scroll', () => {
+      const h = half();
+      if (wrap.scrollLeft >= h) wrap.scrollLeft -= h;
+    }, { passive: true });
+
+    const pause = () => { paused = true; clearTimeout(idleTimer); };
+    const resumeLater = () => {
+      if (reduce) return;
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => { paused = false; last = performance.now(); }, 1800);
+    };
+
+    wrap.addEventListener('mouseenter', pause);
+    wrap.addEventListener('mouseleave', resumeLater);
+    wrap.addEventListener('wheel', () => { pause(); resumeLater(); }, { passive: true });
+
+    // 滑鼠拖曳(觸控裝置用原生捲動,不需這段)
+    let dragging = false, startX = 0, startScroll = 0;
+    wrap.addEventListener('pointerdown', (e) => {
+      pause();
+      if (e.pointerType === 'mouse') {
+        dragging = true; startX = e.clientX; startScroll = wrap.scrollLeft;
+        wrap.classList.add('is-dragging');
+        try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+    });
+    wrap.addEventListener('pointermove', (e) => {
+      if (dragging && e.pointerType === 'mouse') {
+        wrap.scrollLeft = startScroll - (e.clientX - startX);
+      }
+    });
+    const endDrag = () => { dragging = false; wrap.classList.remove('is-dragging'); resumeLater(); };
+    wrap.addEventListener('pointerup', endDrag);
+    wrap.addEventListener('pointercancel', endDrag);
+    wrap.addEventListener('touchend', resumeLater, { passive: true });
+  });
 }
 
 function initShowcase() {

@@ -1228,6 +1228,59 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-wrap: wrap;
 }
 
+/* 客戶評價跑馬燈 */
+.seo-reviews-section { padding: 20px 0 72px; }
+.reviews-marquee-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.reviews-marquee-wrapper::-webkit-scrollbar { display: none; }
+.reviews-marquee-wrapper.is-dragging { cursor: grabbing; }
+.reviews-marquee-wrapper.is-dragging .review-card { pointer-events: none; }
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0 20px;
+  list-style: none;
+}
+.review-card {
+  flex: 0 0 320px;
+  margin-right: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px;
+}
+.review-card figure { margin: 0; }
+.rating-stars {
+  color: #f5b301;
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.review-card blockquote {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.review-card figcaption { display: flex; flex-direction: column; gap: 4px; }
+.review-card figcaption strong { color: var(--text-primary); font-weight: 600; }
+.source-tag {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+.reviews-cta { text-align: center; margin-top: 32px; }
+
 .about-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
