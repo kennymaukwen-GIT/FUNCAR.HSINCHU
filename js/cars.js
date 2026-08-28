@@ -25,8 +25,8 @@ const CARS = [
     brand: 'benz',
     title: '2024 BENZ GLB35',
     subtitle: 'AMG 4MATIC',
-    folder: 'in-stock/2024 BENZ GLB35 AMG',
-    photos: ['1.jpg'],
+    folder: 'BENZ',
+    photos: ['2024 GLB35 AMG 4MATIC : 黑 : 5座:14000公里.jpg'],
     specs: { year: '2024', mileage: '14,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '黑', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1HLuVNKgQr/',
@@ -38,8 +38,8 @@ const CARS = [
     brand: 'benz',
     title: 'BENZ GT53',
     subtitle: 'AMG',
-    folder: 'in-stock/BENZ GT53 AMG',
-    photos: ['1.jpg'],
+    folder: 'BENZ',
+    photos: ['GT53 AMG-1.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1854T7g8hp/',
@@ -51,8 +51,8 @@ const CARS = [
     brand: 'benz',
     title: 'BENZ GLC43',
     subtitle: 'AMG',
-    folder: 'in-stock/BENZ GLC43 AMG Black',
-    photos: ['1.jpg'],
+    folder: 'BENZ',
+    photos: ['GLC 43 AMG-1.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '黑', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1HzfCNv8GB/',
@@ -64,8 +64,8 @@ const CARS = [
     brand: 'mini',
     title: 'MINI COUNTRYMAN',
     subtitle: 'JCW',
-    folder: 'in-stock/MINI Countryman JCW',
-    photos: ['1.jpg'],
+    folder: 'MINI',
+    photos: ['Countryman JCW-1.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1SVt4UY9d1/',
@@ -77,8 +77,8 @@ const CARS = [
     brand: 'mini',
     title: 'MINI CLUBMAN',
     subtitle: 'JCW',
-    folder: 'in-stock/MINI Clubman JCW Black Red',
-    photos: ['1.jpg'],
+    folder: 'MINI',
+    photos: ['Clubman JCW-1.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '黑紅', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1HoEjPeTCm/',
@@ -90,8 +90,8 @@ const CARS = [
     brand: 'mini',
     title: 'MINI CLUBMAN',
     subtitle: 'JCW',
-    folder: 'in-stock/MINI Clubman JCW Green',
-    photos: ['1.jpg'],
+    folder: 'MINI',
+    photos: ['Clubman JCW-2.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '墨綠', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1DTfNVE9gM/',
@@ -103,8 +103,8 @@ const CARS = [
     brand: 'mini',
     title: 'MINI CLUBMAN',
     subtitle: 'JCW',
-    folder: 'in-stock/MINI Clubman JCW Sage',
-    photos: ['1.jpg'],
+    folder: 'MINI',
+    photos: ['Clubman JCW-3.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '灰藍', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1BrD6ZKC1Q/',
@@ -116,8 +116,8 @@ const CARS = [
     brand: 'mini',
     title: 'MINI CLUBMAN',
     subtitle: 'JCW',
-    folder: 'in-stock/MINI Clubman JCW White',
-    photos: ['1.jpg'],
+    folder: 'MINI',
+    photos: ['Clubman JCW-4.jpg'],
     specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/19hyoo5brJ/',
@@ -129,8 +129,8 @@ const CARS = [
     brand: 'porsche',
     title: '2017 PORSCHE 718 BOXSTER',
     subtitle: 'S',
-    folder: 'in-stock/2017 Porsche 718 Boxster S',
-    photos: ['1.jpg'],
+    folder: 'PORSCHE',
+    photos: ['年份：2017 車型：Porsche 718 Boxster S 顏色：極白 里程37,000公里 .jpg'],
     specs: {
       year: '2017',
       mileage: '37,000 公里',
@@ -700,9 +700,14 @@ const CARS = [
 // ============================================
 // 工具函式 - 不需要修改
 // ============================================
+// 品牌資料夾放在網站根目錄(BENZ/BMW/MINI/PORSCHE/OTHERS),照片直接從那裡抓;
+// 其餘 folder(如 in-stock/…、sold/…)維持從 images/ 底下抓。
+const ROOT_PHOTO_FOLDERS = ['BENZ', 'BMW', 'MINI', 'PORSCHE', 'OTHERS'];
 function photoUrl(car, index) {
   const filename = car.photos[index];
-  return 'images/' + encodeURIComponent(car.folder).replace(/%2F/g, '/') + '/' + encodeURIComponent(filename);
+  const first = String(car.folder).split('/')[0];
+  const base = ROOT_PHOTO_FOLDERS.includes(first) ? '' : 'images/';
+  return base + encodeURIComponent(car.folder).replace(/%2F/g, '/') + '/' + encodeURIComponent(filename);
 }
 
 function carsByStatus(status) {

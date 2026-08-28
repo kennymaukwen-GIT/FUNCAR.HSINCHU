@@ -11,7 +11,8 @@ const CARS = loadArray(fs.readFileSync('js/cars.js','utf8'), 'CARS');
 const SHOWCASE_BRANDS = loadArray(fs.readFileSync('js/main.js','utf8'), 'SHOWCASE_BRANDS');
 
 const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const photoUrl = (car,i) => 'images/'+encodeURIComponent(car.folder).replace(/%2F/g,'/')+'/'+encodeURIComponent(car.photos[i]);
+const ROOT_PHOTO_FOLDERS = ['BENZ','BMW','MINI','PORSCHE','OTHERS'];
+const photoUrl = (car,i) => (ROOT_PHOTO_FOLDERS.includes(String(car.folder).split('/')[0]) ? '' : 'images/')+encodeURIComponent(car.folder).replace(/%2F/g,'/')+'/'+encodeURIComponent(car.photos[i]);
 const byStatus = s => CARS.filter(c => c.status === s);
 
 const BRAND_ZH = { bmw: 'BMW', porsche: '保時捷', benz: '賓士', mini: 'MINI', other: '進口車' };
