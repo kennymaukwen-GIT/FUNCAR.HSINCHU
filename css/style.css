@@ -517,6 +517,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-shrink: 0;
   opacity: 0.7;
 }
+.car-card-mileage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  margin-bottom: 4px;
+}
 .car-card-price {
   display: flex;
   align-items: baseline;
@@ -806,13 +817,57 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 16px;
   border-bottom: 1px solid var(--border);
 }
-.filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+/* 隱藏式篩選:切換按鈕 */
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-toggle:hover,
+.filter-toggle[aria-expanded="true"] { color: #fff; border-color: #fff; }
+.filter-toggle-funnel { opacity: .7; flex-shrink: 0; }
+.filter-toggle-label { font-weight: 500; }
+.filter-toggle-current {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding-left: 11px;
+  border-left: 1px solid var(--border);
+}
+.filter-toggle-chevron { opacity: .7; flex-shrink: 0; transition: transform .35s ease; }
+.filter-toggle[aria-expanded="true"] .filter-toggle-chevron { transform: rotate(180deg); }
+
+/* 隱藏式篩選:可收合面板 */
+.filter-tabs {
+  flex-basis: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  transition: max-height .4s ease, opacity .3s ease, padding-top .4s ease;
+}
+.filter-tabs.is-open { max-height: 260px; opacity: 1; padding-top: 22px; }
 .filter-tab {
   padding: 8px 20px;
   font-size: 13px;
   letter-spacing: 2px;
   border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
   color: var(--text-secondary);
+  cursor: pointer;
   transition: var(--transition);
 }
 .filter-tab:hover { color: #fff; border-color: #fff; }
@@ -824,7 +879,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ============================================ */
 .detail-wrap {
   padding: 120px 32px 80px;
-  max-width: var(--max-width);
+  max-width: 880px;
   margin: 0 auto;
 }
 .detail-breadcrumb {
@@ -837,7 +892,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .detail-title {
   font-weight: 300;
   font-size: clamp(28px, 4vw, 42px);
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 .detail-subtitle {
   font-size: 14px;
@@ -854,6 +909,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   grid-template-columns: 2fr 1fr;
   gap: 48px;
 }
+
+/* 詳情頁照片區(移除側欄卡後,與整頁對齊) */
+.detail-media { width: 100%; }
+.detail-fb { text-align: center; margin-top: 28px; }
 
 /* Slideshow */
 .slideshow {
@@ -872,7 +931,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: none;
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
   display: flex;
   align-items: center;
@@ -1033,24 +1092,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .detail-action:hover { border-color: #fff; background: #fff; color: #0a0a0b; }
 
 .detail-specs {
-  margin-top: 64px;
-  padding-top: 64px;
-  border-top: 1px solid var(--border);
+  margin-top: 56px;
 }
 .spec-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 0;
   margin-top: 32px;
+  border-top: 1px solid var(--border);
 }
 .spec-row {
   display: flex;
   justify-content: space-between;
-  padding: 18px 0;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 4px;
   border-bottom: 1px solid var(--border);
 }
-.spec-key { color: var(--text-secondary); font-size: 14px; }
-.spec-val { color: var(--text-primary); font-size: 14px; font-weight: 500; }
+.spec-key { color: var(--text-muted); font-size: 13px; letter-spacing: 1px; }
+.spec-val { color: var(--text-primary); font-size: 15px; font-weight: 500; text-align: right; }
 
 /* ============================================
    ABOUT PAGE

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@200;300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=54">
+<link rel="stylesheet" href="css/style.css?v=65">
   <!-- SEO metadata (auto) -->
   <meta name="description" content="查詢新竹貿鑫國際車業最新在店外匯車與進口中古車庫存，包含熱門賓士 AMG、MINI JCW 等現車，提供第三方鑑定報告，歡迎竹科車友預約賞車。">
   <link rel="canonical" href="https://www.funcar-hsinchu.com.tw/inventory.html">
@@ -61,7 +61,14 @@
 </section>
 
 <div class="filter-bar">
-  <div class="filter-tabs">
+  <button class="filter-toggle" data-filter-toggle aria-expanded="false" aria-controls="filterPanel">
+    <svg class="filter-toggle-funnel" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+    <span class="filter-toggle-label">品牌篩選</span>
+    <span class="filter-toggle-current" data-filter-current>全部</span>
+    <svg class="filter-toggle-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="filter-count" data-filter-count>共 0 輛</div>
+  <div class="filter-tabs" id="filterPanel" data-filter-panel>
     <button class="filter-tab active" data-filter="all">全部</button>
     <button class="filter-tab" data-filter="bmw">BMW</button>
     <button class="filter-tab" data-filter="porsche">PORSCHE</button>
@@ -69,16 +76,97 @@
     <button class="filter-tab" data-filter="mini">MINI</button>
     <button class="filter-tab" data-filter="other">OTHERS</button>
   </div>
-  <div class="filter-count" data-filter-count>共 0 輛</div>
 </div>
 
 <section class="section">
   <div class="car-grid" data-car-grid="in-stock"><!--ssg-->
+      <a href="car-detail.html?id=benz-glb35-amg-2024" class="car-card" data-brand="benz">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/2024%20BENZ%20GLB35%20AMG/1.jpg" alt="2024 BENZ GLB35 賓士 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">2024 BENZ GLB35</div>
+          <div class="car-card-subtitle">AMG 4MATIC</div>
+          <div class="car-card-mileage"><span>里程</span><span>14,000 公里</span></div>
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=benz-gt53-amg-white" class="car-card" data-brand="benz">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/BENZ%20GT53%20AMG/1.jpg" alt="BENZ GT53 賓士 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">BENZ GT53</div>
+          <div class="car-card-subtitle">AMG</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=benz-glc43-amg-black" class="car-card" data-brand="benz">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/BENZ%20GLC43%20AMG%20Black/1.jpg" alt="BENZ GLC43 賓士 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">BENZ GLC43</div>
+          <div class="car-card-subtitle">AMG</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=mini-countryman-jcw-white" class="car-card" data-brand="mini">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/MINI%20Countryman%20JCW/1.jpg" alt="MINI COUNTRYMAN MINI 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">MINI COUNTRYMAN</div>
+          <div class="car-card-subtitle">JCW</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=mini-clubman-jcw-black-red" class="car-card" data-brand="mini">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/MINI%20Clubman%20JCW%20Black%20Red/1.jpg" alt="MINI CLUBMAN MINI 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">MINI CLUBMAN</div>
+          <div class="car-card-subtitle">JCW</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=mini-clubman-jcw-green" class="car-card" data-brand="mini">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/MINI%20Clubman%20JCW%20Green/1.jpg" alt="MINI CLUBMAN MINI 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">MINI CLUBMAN</div>
+          <div class="car-card-subtitle">JCW</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=mini-clubman-jcw-sage" class="car-card" data-brand="mini">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/MINI%20Clubman%20JCW%20Sage/1.jpg" alt="MINI CLUBMAN MINI 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">MINI CLUBMAN</div>
+          <div class="car-card-subtitle">JCW</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=mini-clubman-jcw-white" class="car-card" data-brand="mini">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/MINI%20Clubman%20JCW%20White/1.jpg" alt="MINI CLUBMAN MINI 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">MINI CLUBMAN</div>
+          <div class="car-card-subtitle">JCW</div>
+          
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
+      <a href="car-detail.html?id=porsche-718-boxster-s-2017" class="car-card" data-brand="porsche">
+        <div class="car-card-media"><img class="car-card-img" src="images/in-stock/2017%20Porsche%20718%20Boxster%20S/1.jpg" alt="2017 PORSCHE 718 BOXSTER 保時捷 新竹外匯車" loading="lazy"></div>
+        <div class="car-card-body">
+          <div class="car-card-title">2017 PORSCHE 718 BOXSTER</div>
+          <div class="car-card-subtitle">S</div>
+          <div class="car-card-mileage"><span>里程</span><span>37,000 公里</span></div>
+          <div class="car-card-price">電洽</div>
+        </div>
+      </a>
       <a href="car-detail.html?id=mini-cabrio-jcw-2024" class="car-card" data-brand="mini">
         <div class="car-card-media"><img class="car-card-img" src="images/in-stock/2024%20MY%20MINI%20Cabrio%20JCW/IMG_2671.JPG" alt="2024 MINI CABRIO MINI 新竹外匯車" loading="lazy"></div>
         <div class="car-card-body">
           <div class="car-card-title">2024 MINI CABRIO</div>
           <div class="car-card-subtitle">JCW</div>
+          
           <div class="car-card-price">電洽</div>
         </div>
       </a>
@@ -87,6 +175,7 @@
         <div class="car-card-body">
           <div class="car-card-title">2024 MINI CLUBMAN S</div>
           <div class="car-card-subtitle">UNTOLD EDITION</div>
+          
           <div class="car-card-price">電洽</div>
         </div>
       </a>
@@ -95,6 +184,7 @@
         <div class="car-card-body">
           <div class="car-card-title">2025 BENZ E200</div>
           <div class="car-card-subtitle">LUXURY</div>
+          
           <div class="car-card-price">電洽</div>
         </div>
       </a>
@@ -103,6 +193,7 @@
         <div class="car-card-body">
           <div class="car-card-title">BENZ GLC 300</div>
           <div class="car-card-subtitle">BLACK</div>
+          
           <div class="car-card-price">電洽</div>
         </div>
       </a>
@@ -111,6 +202,7 @@
         <div class="car-card-body">
           <div class="car-card-title">MINI CLUBMAN</div>
           <div class="car-card-subtitle">JCW · BLACK</div>
+          
           <div class="car-card-price">電洽</div>
         </div>
       </a>
@@ -154,7 +246,7 @@
   </div>
 </footer>
 
-<script src="js/cars.js?v=7"></script>
-<script src="js/main.js?v=28"></script>
+<script src="js/cars.js?v=10"></script>
+<script src="js/main.js?v=36"></script>
 </body>
 </html>

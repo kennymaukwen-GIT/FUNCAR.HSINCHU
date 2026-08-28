@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Filters
   initFilters();
+  initFilterToggle();
 
   // Apply ?brand= from the homepage finder
   applyInventoryQueryFilter();
@@ -150,6 +151,8 @@ function renderCarGrid(selector, status, limit) {
       ? `<span class="car-card-price-value" style="font-size:16px; color:var(--text-muted);">已售出</span>`
       : `<span class="car-card-price-value" style="font-size:${car.status === 'coming' ? '16px' : '22px'};">${car.status === 'in-stock' && car.price !== '電洽' ? car.price : (car.status === 'coming' ? '接受預訂' : '$ ' + car.price)}</span>`;
 
+    const mi = car.specs && car.specs.mileage;
+    const miRow = (mi && mi !== '—') ? `<div class="car-card-mileage"><span>里程</span><span>${mi}</span></div>` : '';
     return `
       <${tag} ${linkable ? `href="${href}"` : ''} class="car-card" data-brand="${car.brand}">
         <div class="car-card-media">
@@ -160,6 +163,7 @@ function renderCarGrid(selector, status, limit) {
         <div class="car-card-body">
           <div class="car-card-title">${car.title}</div>
           <div class="car-card-subtitle">${car.subtitle}</div>
+          ${miRow}
           <div class="car-card-price">
             <span class="car-card-price-label">${priceLabel}</span>
             ${priceVal}
@@ -242,56 +246,27 @@ function renderCarDetail() {
     `<div class="thumbnail${i === 0 ? ' active' : ''}"><img src="${photoUrl(car, i)}" alt=""></div>`
   ).join('');
 
+  // 若該車有對應 FB 貼文,顯示「看更多實拍」按鈕(無資料則不顯示)
+  const fbBtn = car.fbUrl
+    ? `<div class="detail-fb"><a href="${car.fbUrl}" target="_blank" rel="noopener" class="btn btn-outline">看更多實拍（Facebook）</a></div>`
+    : '';
+
   wrap.innerHTML = `
     <div class="detail-breadcrumb">
       <a href="index.html">首頁</a> / <a href="${backLinkMap[car.status]}">${backLabelMap[car.status]}</a> / ${car.title}
     </div>
     <h1 class="detail-title">${car.title} ${car.subtitle}</h1>
-    <div class="detail-subtitle">${car.specs.year} · ${car.specs.transmission} · ${car.specs.mileage} · ${car.specs.fuel} · ${car.specs.location}</div>
 
-    <div class="detail-layout">
-      <div>
-        <div class="slideshow">
-          <div class="slideshow-slides">${slidesHtml}</div>
-          <button class="slideshow-nav prev" aria-label="上一張">‹</button>
-          <button class="slideshow-nav next" aria-label="下一張">›</button>
-          <div class="slideshow-dots">${dotsHtml}</div>
-        </div>
-        <div class="thumbnails">${thumbsHtml}</div>
+    <div class="detail-media">
+      <div class="slideshow">
+        <div class="slideshow-slides">${slidesHtml}</div>
+        <button class="slideshow-nav prev" aria-label="上一張">‹</button>
+        <button class="slideshow-nav next" aria-label="下一張">›</button>
+        <div class="slideshow-dots">${dotsHtml}</div>
       </div>
-
-      <aside class="detail-sidebar">
-        <div class="detail-price-row">
-          <span class="detail-price-label">${priceLabelMap[car.status]}</span>
-          <span class="detail-price-value">${priceShowMap[car.status]}</span>
-        </div>
-
-        <div class="detail-meta-grid">
-          <div class="detail-meta-item">
-            <div class="detail-meta-value">${car.specs.year}</div>
-            <div class="detail-meta-label">YEAR</div>
-          </div>
-          <div class="detail-meta-item">
-            <div class="detail-meta-value">${car.specs.mileage}</div>
-            <div class="detail-meta-label">KILOMETER</div>
-          </div>
-          <div class="detail-meta-item">
-            <div class="detail-meta-value">${statusTextMap[car.status]}</div>
-            <div class="detail-meta-label">STATUS</div>
-          </div>
-          <div class="detail-meta-item">
-            <div class="detail-meta-value">${car.specs.location}</div>
-            <div class="detail-meta-label">LOCATION</div>
-          </div>
-        </div>
-
-        <div class="detail-actions">
-          <a href="tel:0922782597" class="detail-action">撥打電話</a>
-          <a href="https://line.me/" target="_blank" class="detail-action">LINE 詢問</a>
-          <a href="contact.html" class="detail-action">預約賞車</a>
-        </div>
-      </aside>
+      <div class="thumbnails">${thumbsHtml}</div>
     </div>
+    ${fbBtn}
 
     <div class="detail-specs">
       <div class="section-eyebrow" style="margin-bottom: 12px;">SPECIFICATIONS</div>
@@ -299,14 +274,10 @@ function renderCarDetail() {
       <div class="spec-list">
         <div class="spec-row"><span class="spec-key">車輛年份</span><span class="spec-val">${car.specs.year}</span></div>
         <div class="spec-row"><span class="spec-key">車輛型號</span><span class="spec-val">${car.title} ${car.subtitle}</span></div>
-        <div class="spec-row"><span class="spec-key">變速系統</span><span class="spec-val">${car.specs.transmission}</span></div>
-        <div class="spec-row"><span class="spec-key">燃料</span><span class="spec-val">${car.specs.fuel}</span></div>
+        <div class="spec-row"><span class="spec-key">顏色</span><span class="spec-val">${car.specs.exteriorColor}</span></div>
         <div class="spec-row"><span class="spec-key">里程數</span><span class="spec-val">${car.specs.mileage}</span></div>
-        <div class="spec-row"><span class="spec-key">外觀顏色</span><span class="spec-val">${car.specs.exteriorColor}</span></div>
-        <div class="spec-row"><span class="spec-key">內裝顏色</span><span class="spec-val">${car.specs.interiorColor}</span></div>
         <div class="spec-row"><span class="spec-key">車源地</span><span class="spec-val">${car.specs.origin}</span></div>
-        <div class="spec-row"><span class="spec-key">展示地點</span><span class="spec-val">${car.specs.location}</span></div>
-        <div class="spec-row"><span class="spec-key">狀態</span><span class="spec-val">${statusTextMap[car.status]}</span></div>
+        <div class="spec-row"><span class="spec-key">鑑定狀態</span><span class="spec-val">${statusTextMap[car.status]}</span></div>
       </div>
     </div>
   `;
@@ -327,7 +298,6 @@ function initSlideshows() {
     if (!slides.length) return;
 
     let current = 0;
-    let timer = null;
 
     const goTo = (i) => {
       current = (i + slides.length) % slides.length;
@@ -342,24 +312,42 @@ function initSlideshows() {
     const next = () => goTo(current + 1);
     const prev = () => goTo(current - 1);
 
-    const start = () => { stop(); timer = setInterval(next, 3000); };
-    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
-
-    dots.forEach((d, idx) => d.addEventListener('click', () => { goTo(idx); start(); }));
-    thumbs.forEach((t, idx) => t.addEventListener('click', () => { goTo(idx); start(); }));
-    if (prevBtn) prevBtn.addEventListener('click', () => { prev(); start(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { next(); start(); });
-
-    show.addEventListener('mouseenter', stop);
-    show.addEventListener('mouseleave', start);
-
-    start();
+    // 手動切換,無自動播放/淡入動畫
+    dots.forEach((d, idx) => d.addEventListener('click', () => goTo(idx)));
+    thumbs.forEach((t, idx) => t.addEventListener('click', () => goTo(idx)));
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+    if (nextBtn) nextBtn.addEventListener('click', next);
   });
 }
 
 // ============================================
 // Inventory filter tabs
 // ============================================
+function initFilterToggle() {
+  const btn = document.querySelector('[data-filter-toggle]');
+  const panel = document.querySelector('[data-filter-panel]');
+  if (!btn || !panel) return;
+  const current = document.querySelector('[data-filter-current]');
+  const setOpen = (open) => {
+    panel.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(!panel.classList.contains('is-open'));
+  });
+  panel.querySelectorAll('.filter-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      if (current) current.textContent = tab.textContent.trim();
+      setOpen(false);
+    });
+  });
+  // 點面板外側自動收合
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+  });
+}
+
 function initFilters() {
   const tabs = document.querySelectorAll('.filter-tab');
   if (!tabs.length) return;

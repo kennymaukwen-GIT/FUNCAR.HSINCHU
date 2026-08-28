@@ -19,12 +19,15 @@ function carCard(car){
   const href = `car-detail.html?id=${car.id}`;
   const price = car.status==='sold' ? '已售出' : (car.status==='coming' ? '接受預訂' : (car.price==='電洽' ? '電洽' : '$ '+car.price));
   const alt = `${car.title} ${BRAND_ZH[car.brand]||''} 新竹外匯車`;
+  const mi = car.specs && car.specs.mileage;
+  const miRow = (mi && mi !== '—') ? `<div class="car-card-mileage"><span>里程</span><span>${esc(mi)}</span></div>` : '';
   return `
       <a href="${href}" class="car-card" data-brand="${esc(car.brand)}">
         <div class="car-card-media"><img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(alt)}" loading="lazy"></div>
         <div class="car-card-body">
           <div class="car-card-title">${esc(car.title)}</div>
           <div class="car-card-subtitle">${esc(car.subtitle)}</div>
+          ${miRow}
           <div class="car-card-price">${esc(price)}</div>
         </div>
       </a>`;
