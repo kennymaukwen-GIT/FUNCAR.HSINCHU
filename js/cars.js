@@ -20,6 +20,45 @@ const CARS = [
   // ============ 在店車款 ============
 
   {
+    id: 'benz-glc300-coupe-white-2024',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2024 BENZ GLC300',
+    subtitle: 'COUPE AMG',
+    folder: 'BENZ',
+    photos: ['台灣總代理 2024 GLC300 Coupe AMG 4MATIC : 特選瓷釉白 : 23000公里.jpg'],
+    specs: { year: '2024', mileage: '23,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '總代理', exteriorColor: '瓷釉白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/19GgFU2RsR/',
+  },
+
+  {
+    id: 'mini-clubman-jcw-red-2023',
+    status: 'in-stock',
+    brand: 'mini',
+    title: '2023 MINI CLUBMAN',
+    subtitle: 'JCW ALL4',
+    folder: 'MINI',
+    photos: ['2023 MINI Clubman JCW ALL4 :辣椒紅:里程8000公里.jpg'],
+    specs: { year: '2023', mileage: '8,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '辣椒紅', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/19VS5ZTQK8/',
+  },
+
+  {
+    id: 'mini-clubman-jcw-untold-black-2024',
+    status: 'in-stock',
+    brand: 'mini',
+    title: '2024 MINI CLUBMAN',
+    subtitle: 'JCW UNTOLD EDITION',
+    folder: 'MINI',
+    photos: ['2024MY MINI Clubman JCW ALL4  Untold Edition BLACK特仕版:里程11000公里.jpg'],
+    specs: { year: '2024', mileage: '11,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '黑', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1P8NQfhe9E/',
+  },
+
+  {
     id: 'benz-glb35-amg-2024',
     status: 'in-stock',
     brand: 'benz',
@@ -33,14 +72,14 @@ const CARS = [
   },
 
   {
-    id: 'benz-gt53-amg-white',
+    id: 'benz-gt43-amg-2022',
     status: 'in-stock',
     brand: 'benz',
-    title: 'BENZ GT53',
-    subtitle: 'AMG',
+    title: '2022 BENZ GT43',
+    subtitle: 'AMG 4 DOOR COUPE',
     folder: 'BENZ',
-    photos: ['GT53 AMG-1.jpg'],
-    specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
+    photos: ['2022 GT43AMG 4Door Coupe :極白:里程20000公里.jpg'],
+    specs: { year: '2022', mileage: '20,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '極白', interiorColor: '—' },
     price: '電洽',
     fbUrl: 'https://www.facebook.com/share/p/1854T7g8hp/',
   },
@@ -147,7 +186,7 @@ const CARS = [
 
   {
     id: 'mini-cabrio-jcw-2024',
-    status: 'in-stock',
+    status: 'sold',
     brand: 'mini',
     title: '2024 MINI CABRIO',
     subtitle: 'JCW',
@@ -172,7 +211,7 @@ const CARS = [
 
   {
     id: 'mini-clubman-untold-2024',
-    status: 'in-stock',
+    status: 'sold',
     brand: 'mini',
     title: '2024 MINI CLUBMAN S',
     subtitle: 'UNTOLD EDITION',
@@ -196,7 +235,7 @@ const CARS = [
 
   {
     id: 'benz-e200-luxury-2025',
-    status: 'in-stock',
+    status: 'sold',
     brand: 'benz',
     title: '2025 BENZ E200',
     subtitle: 'LUXURY',
@@ -221,7 +260,7 @@ const CARS = [
 
   {
     id: 'benz-glc300-black',
-    status: 'in-stock',
+    status: 'sold',
     brand: 'benz',
     title: 'BENZ GLC 300',
     subtitle: 'BLACK',
@@ -244,7 +283,7 @@ const CARS = [
 
   {
     id: 'mini-clubman-jcw-black',
-    status: 'in-stock',
+    status: 'sold',
     brand: 'mini',
     title: 'MINI CLUBMAN',
     subtitle: 'JCW · BLACK',
@@ -700,14 +739,10 @@ const CARS = [
 // ============================================
 // 工具函式 - 不需要修改
 // ============================================
-// 品牌資料夾放在網站根目錄(BENZ/BMW/MINI/PORSCHE/OTHERS),照片直接從那裡抓;
-// 其餘 folder(如 in-stock/…、sold/…)維持從 images/ 底下抓。
-const ROOT_PHOTO_FOLDERS = ['BENZ', 'BMW', 'MINI', 'PORSCHE', 'OTHERS'];
+// 所有照片都放在 images/ 底下(品牌資料夾 images/BENZ、images/MINI…;或 images/in-stock/…、images/sold/…)。
 function photoUrl(car, index) {
   const filename = car.photos[index];
-  const first = String(car.folder).split('/')[0];
-  const base = ROOT_PHOTO_FOLDERS.includes(first) ? '' : 'images/';
-  return base + encodeURIComponent(car.folder).replace(/%2F/g, '/') + '/' + encodeURIComponent(filename);
+  return 'images/' + encodeURIComponent(car.folder).replace(/%2F/g, '/') + '/' + encodeURIComponent(filename);
 }
 
 function carsByStatus(status) {

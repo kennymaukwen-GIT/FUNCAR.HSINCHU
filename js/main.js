@@ -143,9 +143,9 @@ function renderCarGrid(selector, status, limit) {
 
   container.innerHTML = cars.map(car => {
     const firstPhoto = photoUrl(car, 0);
-    const linkable = true;
+    const linkable = car.status !== 'sold';   // 已售車只有卡片、不連內頁
     const href = `car-detail.html?id=${car.id}`;
-    const tag = 'a';
+    const tag = linkable ? 'a' : 'div';
     const priceLabel = car.status === 'sold' ? 'STATUS' : (car.status === 'coming' ? 'ETA' : 'PRICE');
     const priceVal = car.status === 'sold'
       ? `<span class="car-card-price-value" style="font-size:16px; color:var(--text-muted);">已售出</span>`
@@ -158,7 +158,6 @@ function renderCarGrid(selector, status, limit) {
         <div class="car-card-media">
           <img class="car-card-img" src="${firstPhoto}" alt="${car.title} ${BRAND_ZH[car.brand] || ''} 新竹外匯車" loading="lazy">
           <div class="car-card-status ${statusClass[car.status]}">${statusLabels[car.status]}</div>
-          <div class="car-card-badge">📷 ${car.photos.length}</div>
         </div>
         <div class="car-card-body">
           <div class="car-card-title">${car.title}</div>
