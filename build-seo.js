@@ -11,8 +11,7 @@ const CARS = loadArray(fs.readFileSync('js/cars.js','utf8'), 'CARS');
 const SHOWCASE_BRANDS = loadArray(fs.readFileSync('js/main.js','utf8'), 'SHOWCASE_BRANDS');
 
 const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const ROOT_PHOTO_FOLDERS = ['BENZ','BMW','MINI','PORSCHE','OTHERS'];
-const photoUrl = (car,i) => (ROOT_PHOTO_FOLDERS.includes(String(car.folder).split('/')[0]) ? '' : 'images/')+encodeURIComponent(car.folder).replace(/%2F/g,'/')+'/'+encodeURIComponent(car.photos[i]);
+const photoUrl = (car,i) => 'images/'+encodeURIComponent(car.folder).replace(/%2F/g,'/')+'/'+encodeURIComponent(car.photos[i]);
 const byStatus = s => CARS.filter(c => c.status === s);
 
 const BRAND_ZH = { bmw: 'BMW', porsche: '保時捷', benz: '賓士', mini: 'MINI', other: '進口車' };
@@ -22,8 +21,11 @@ function carCard(car){
   const alt = `${car.title} ${BRAND_ZH[car.brand]||''} 新竹外匯車`;
   const mi = car.specs && car.specs.mileage;
   const miRow = (mi && mi !== '—') ? `<div class="car-card-mileage"><span>里程</span><span>${esc(mi)}</span></div>` : '';
+  const link = car.status !== 'sold';   // 已售車只有卡片、不連內頁
+  const open = link ? `<a href="${href}" class="car-card"` : `<div class="car-card"`;
+  const close = link ? '</a>' : '</div>';
   return `
-      <a href="${href}" class="car-card" data-brand="${esc(car.brand)}">
+      ${open} data-brand="${esc(car.brand)}">
         <div class="car-card-media"><img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(alt)}" loading="lazy"></div>
         <div class="car-card-body">
           <div class="car-card-title">${esc(car.title)}</div>
@@ -31,7 +33,7 @@ function carCard(car){
           ${miRow}
           <div class="car-card-price">${esc(price)}</div>
         </div>
-      </a>`;
+      ${close}`;
 }
 const grid = status => byStatus(status).map(carCard).join('') + '\n    ';
 
