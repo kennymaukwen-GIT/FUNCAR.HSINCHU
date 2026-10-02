@@ -148,7 +148,7 @@ function renderCarGrid(selector, status, limit) {
     const tag = linkable ? 'a' : 'div';
     const mi = car.specs && car.specs.mileage;
     const miText = (mi && mi !== '—') ? mi : '洽詢';
-    const priceText = car.status === 'sold' ? '<strong>已售出</strong>'
+    const priceText = car.status === 'sold' ? '<strong>成交</strong>'
       : car.status === 'coming' ? '價格：<strong>接受預訂</strong>'
       : `價格：<strong>${car.price && car.price !== '電洽' ? car.price : '電洽'}</strong>`;
     const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
@@ -188,7 +188,7 @@ function renderCarDetail() {
 
   // Update page title + SEO meta (dynamic, per-car)
   const brandZh = BRAND_ZH[car.brand] || '進口車';
-  const hasKw = /新竹|外匯|進口|代辦/.test(car.subtitle || '');
+  const hasKw = /新竹|外匯|進口/.test(car.subtitle || '');
   const region = hasKw ? '' : ' · 新竹外匯車';
   document.title = `${car.title} ${car.subtitle}${region}｜FUN CAR 貿鑫國際車業`;
 
@@ -509,7 +509,7 @@ function initFinder() {
 // `white: true` recolors a dark logo to white so it shows on the black card.
 // 品牌 logo 的中文 SEO 替代文字(alt / aria-label 用;不影響畫面與 data-title 配色)
 const BRAND_SEO_ALT = {
-  'MINI': 'MINI 外匯車代辦',
+  'MINI': 'MINI 外匯車進口',
   'PORSCHE': '保時捷 Porsche 客製化尋車',
   'MERCEDES-BENZ': '賓士 Mercedes-AMG 進口外匯車',
   'BMW': 'BMW 進口外匯車',
