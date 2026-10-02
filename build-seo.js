@@ -20,7 +20,7 @@ function carCard(car){
   const alt = `${car.title} ${BRAND_ZH[car.brand]||''} 新竹外匯車`;
   const mi = car.specs && car.specs.mileage;
   const miText = (mi && mi !== '—') ? mi : '洽詢';
-  const priceText = car.status==='sold' ? '<strong>已售出</strong>'
+  const priceText = car.status==='sold' ? '<strong>成交</strong>'
     : car.status==='coming' ? '價格：<strong>接受預訂</strong>'
     : `價格：<strong>${car.price && car.price!=='電洽' ? esc(car.price) : '電洽'}</strong>`;
   const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
@@ -42,7 +42,7 @@ function carCard(car){
 const grid = status => byStatus(status).map(carCard).join('') + '\n    ';
 
 const BRAND_SEO_ALT = {
-  'MINI': 'MINI 外匯車代辦',
+  'MINI': 'MINI 外匯車進口',
   'PORSCHE': '保時捷 Porsche 客製化尋車',
   'MERCEDES-BENZ': '賓士 Mercedes-AMG 進口外匯車',
   'BMW': 'BMW 進口外匯車',
