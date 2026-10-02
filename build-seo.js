@@ -17,21 +17,25 @@ const byStatus = s => CARS.filter(c => c.status === s);
 const BRAND_ZH = { bmw: 'BMW', porsche: '保時捷', benz: '賓士', mini: 'MINI', other: '進口車' };
 function carCard(car){
   const href = `car-detail.html?id=${car.id}`;
-  const price = car.status==='sold' ? '已售出' : (car.status==='coming' ? '接受預訂' : (car.price==='電洽' ? '電洽' : '$ '+car.price));
   const alt = `${car.title} ${BRAND_ZH[car.brand]||''} 新竹外匯車`;
   const mi = car.specs && car.specs.mileage;
-  const miRow = (mi && mi !== '—') ? `<div class="car-card-mileage"><span>里程</span><span>${esc(mi)}</span></div>` : '';
+  const miText = (mi && mi !== '—') ? mi : '洽詢';
+  const priceText = car.status==='sold' ? '<strong>已售出</strong>'
+    : car.status==='coming' ? '價格：<strong>接受預訂</strong>'
+    : `價格：<strong>${car.price && car.price!=='電洽' ? esc(car.price) : '電洽'}</strong>`;
+  const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
   const link = car.status !== 'sold';   // 已售車只有卡片、不連內頁
   const open = link ? `<a href="${href}" class="car-card"` : `<div class="car-card"`;
   const close = link ? '</a>' : '</div>';
   return `
       ${open} data-brand="${esc(car.brand)}">
-        <div class="car-card-media"><img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(alt)}" loading="lazy"></div>
-        <div class="car-card-body">
-          <div class="car-card-title">${esc(car.title)}</div>
-          <div class="car-card-subtitle">${esc(car.subtitle)}</div>
-          ${miRow}
-          <div class="car-card-price">${esc(price)}</div>
+        <img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(alt)}" loading="lazy">
+        <div class="car-card-overlay">
+          <div class="car-card-title">${esc(titleFull)}</div>
+          <div class="car-card-info">
+            <span>里程：<strong>${esc(miText)}</strong></span>
+            <span>${priceText}</span>
+          </div>
         </div>
       ${close}`;
 }

@@ -20,6 +20,45 @@ const CARS = [
   // ============ 在店車款 ============
 
   {
+    id: 'benz-c180-coupe-amg-2021',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2021 BENZ C180',
+    subtitle: 'COUPE AMG',
+    folder: 'BENZ',
+    photos: ['年份：2021車型：C180 Coupe AMG 顏色：極白 里程：電洽 .JPG'],
+    specs: { year: '2021', mileage: '洽詢', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '極白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1Eqdi7caWd/',
+  },
+
+  {
+    id: 'mini-cooper-jcw-2023',
+    status: 'in-stock',
+    brand: 'mini',
+    title: '2023 MINI COOPER',
+    subtitle: 'JCW',
+    folder: 'MINI',
+    photos: ['年份：2023 車型：MINI Cooper JCW 顏色：午夜黑 里程25,000公里 .JPG'],
+    specs: { year: '2023', mileage: '25,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '午夜黑', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1F94ShSinr/',
+  },
+
+  {
+    id: 'porsche-718-cayman-s-2020',
+    status: 'in-stock',
+    brand: 'porsche',
+    title: '2020 PORSCHE 718 CAYMAN',
+    subtitle: 'S',
+    folder: 'PORSCHE',
+    photos: ['年份：2020 車型：台灣總代理 Porsche 718 Cayman S 顏色：御林軍紅 里程13,000公里 .JPG'],
+    specs: { year: '2020', mileage: '13,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '總代理', exteriorColor: '御林軍紅', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1coMbR9bhw/',
+  },
+
+  {
     id: 'benz-glc300-coupe-white-2024',
     status: 'in-stock',
     brand: 'benz',

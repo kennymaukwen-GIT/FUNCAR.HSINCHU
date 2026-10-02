@@ -146,26 +146,20 @@ function renderCarGrid(selector, status, limit) {
     const linkable = car.status !== 'sold';   // 已售車只有卡片、不連內頁
     const href = `car-detail.html?id=${car.id}`;
     const tag = linkable ? 'a' : 'div';
-    const priceLabel = car.status === 'sold' ? 'STATUS' : (car.status === 'coming' ? 'ETA' : 'PRICE');
-    const priceVal = car.status === 'sold'
-      ? `<span class="car-card-price-value" style="font-size:16px; color:var(--text-muted);">已售出</span>`
-      : `<span class="car-card-price-value" style="font-size:${car.status === 'coming' ? '16px' : '22px'};">${car.status === 'in-stock' && car.price !== '電洽' ? car.price : (car.status === 'coming' ? '接受預訂' : '$ ' + car.price)}</span>`;
-
     const mi = car.specs && car.specs.mileage;
-    const miRow = (mi && mi !== '—') ? `<div class="car-card-mileage"><span>里程</span><span>${mi}</span></div>` : '';
+    const miText = (mi && mi !== '—') ? mi : '洽詢';
+    const priceText = car.status === 'sold' ? '<strong>已售出</strong>'
+      : car.status === 'coming' ? '價格：<strong>接受預訂</strong>'
+      : `價格：<strong>${car.price && car.price !== '電洽' ? car.price : '電洽'}</strong>`;
+    const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
     return `
       <${tag} ${linkable ? `href="${href}"` : ''} class="car-card" data-brand="${car.brand}">
-        <div class="car-card-media">
-          <img class="car-card-img" src="${firstPhoto}" alt="${car.title} ${BRAND_ZH[car.brand] || ''} 新竹外匯車" loading="lazy">
-          <div class="car-card-status ${statusClass[car.status]}">${statusLabels[car.status]}</div>
-        </div>
-        <div class="car-card-body">
-          <div class="car-card-title">${car.title}</div>
-          <div class="car-card-subtitle">${car.subtitle}</div>
-          ${miRow}
-          <div class="car-card-price">
-            <span class="car-card-price-label">${priceLabel}</span>
-            ${priceVal}
+        <img class="car-card-img" src="${firstPhoto}" alt="${car.title} ${BRAND_ZH[car.brand] || ''} 新竹外匯車" loading="lazy">
+        <div class="car-card-overlay">
+          <div class="car-card-title">${titleFull}</div>
+          <div class="car-card-info">
+            <span>里程：<strong>${miText}</strong></span>
+            <span>${priceText}</span>
           </div>
         </div>
       </${tag}>
