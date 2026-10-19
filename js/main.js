@@ -253,8 +253,6 @@ function renderCarDetail() {
     <div class="detail-media">
       <div class="slideshow">
         <div class="slideshow-slides">${slidesHtml}</div>
-        <button class="slideshow-nav prev" aria-label="上一張">‹</button>
-        <button class="slideshow-nav next" aria-label="下一張">›</button>
         <div class="slideshow-dots">${dotsHtml}</div>
       </div>
       <div class="thumbnails">${thumbsHtml}</div>

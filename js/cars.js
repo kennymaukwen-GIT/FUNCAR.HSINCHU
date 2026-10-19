@@ -20,6 +20,32 @@ const CARS = [
   // ============ 在店車款 ============
 
   {
+    id: 'benz-glc43-amg-coupe-white-2026',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2026 BENZ GLC43',
+    subtitle: 'AMG COUPE',
+    folder: 'BENZ',
+    photos: ['GLC 43 AMG COUPE-1.jpg', 'GLC 43 AMG COUPE-2.jpg'],
+    specs: { year: '2026', mileage: '全新', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '極白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1F9ZRFHshW/',
+  },
+
+  {
+    id: 'porsche-macan-2024',
+    status: 'in-stock',
+    brand: 'porsche',
+    title: '2024 PORSCHE MACAN',
+    subtitle: '',
+    folder: 'PORSCHE',
+    photos: ['2024 Porsche Macan : 蠟灰色:24000公里.jpg'],
+    specs: { year: '2024', mileage: '24,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '蠟灰色', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/19mBLGXDJx/',
+  },
+
+  {
     id: 'benz-c180-coupe-amg-2021',
     status: 'in-stock',
     brand: 'benz',
@@ -81,7 +107,7 @@ const CARS = [
     photos: ['2023 MINI Clubman JCW ALL4 :辣椒紅:里程8000公里.jpg'],
     specs: { year: '2023', mileage: '8,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '辣椒紅', interiorColor: '—' },
     price: '電洽',
-    fbUrl: 'https://www.facebook.com/share/p/19VS5ZTQK8/',
+    fbUrl: 'https://www.facebook.com/share/p/1EioE5ys71/',
   },
 
   {
@@ -94,7 +120,7 @@ const CARS = [
     photos: ['2024MY MINI Clubman JCW ALL4  Untold Edition BLACK特仕版:里程11000公里.jpg'],
     specs: { year: '2024', mileage: '11,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '黑', interiorColor: '—' },
     price: '電洽',
-    fbUrl: 'https://www.facebook.com/share/p/1P8NQfhe9E/',
+    fbUrl: 'https://www.facebook.com/share/p/1HNNWYTmYV/',
   },
 
   {
@@ -166,39 +192,39 @@ const CARS = [
     id: 'mini-clubman-jcw-green',
     status: 'in-stock',
     brand: 'mini',
-    title: 'MINI CLUBMAN',
-    subtitle: 'JCW',
+    title: '2023 MINI CLUBMAN',
+    subtitle: 'JCW ALL4',
     folder: 'MINI',
-    photos: ['Clubman JCW-2.jpg'],
-    specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '墨綠', interiorColor: '—' },
+    photos: ['2023 MY MINI Clubman JCW ALL4 :反叛綠:26000公里.jpg'],
+    specs: { year: '2023', mileage: '26,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '反叛綠', interiorColor: '—' },
     price: '電洽',
-    fbUrl: 'https://www.facebook.com/share/p/1DTfNVE9gM/',
+    fbUrl: 'https://www.facebook.com/share/p/1Fi74Jz8Gq/',
   },
 
   {
     id: 'mini-clubman-jcw-sage',
     status: 'in-stock',
     brand: 'mini',
-    title: 'MINI CLUBMAN',
-    subtitle: 'JCW',
+    title: '2024 MINI CLUBMAN',
+    subtitle: 'S UNTOLD EDITION',
     folder: 'MINI',
-    photos: ['Clubman JCW-3.jpg'],
-    specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '灰藍', interiorColor: '—' },
+    photos: ['2024MY Clubman S 限量特仕版 Untold Edition:7000公里.jpg'],
+    specs: { year: '2024', mileage: '7,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '灰藍', interiorColor: '—' },
     price: '電洽',
-    fbUrl: 'https://www.facebook.com/share/p/1BrD6ZKC1Q/',
+    fbUrl: 'https://www.facebook.com/share/p/193JW9BSh6/',
   },
 
   {
     id: 'mini-clubman-jcw-white',
     status: 'in-stock',
     brand: 'mini',
-    title: 'MINI CLUBMAN',
-    subtitle: 'JCW',
+    title: '2024 MINI CLUBMAN',
+    subtitle: 'JCW ALL4',
     folder: 'MINI',
-    photos: ['Clubman JCW-4.jpg'],
-    specs: { year: '—', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
+    photos: ['024MY MINI Clubman JCW ALL4 :北極白:里程4500公里.jpg'],
+    specs: { year: '2024', mileage: '4,500 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '北極白', interiorColor: '—' },
     price: '電洽',
-    fbUrl: 'https://www.facebook.com/share/p/19hyoo5brJ/',
+    fbUrl: 'https://www.facebook.com/share/p/1bk1VRj2JZ/',
   },
 
   {
@@ -225,27 +251,24 @@ const CARS = [
 
   {
     id: 'mini-cabrio-jcw-2024',
-    status: 'sold',
+    status: 'in-stock',
     brand: 'mini',
     title: '2024 MINI CABRIO',
     subtitle: 'JCW',
-    folder: 'in-stock/2024 MY MINI Cabrio JCW',
-    photos: [
-      'IMG_2671.JPG','IMG_2672.JPG','IMG_2673.JPG','IMG_2674.JPG','IMG_2675.JPG',
-      'IMG_2677.JPG','IMG_2678.JPG','IMG_2682.JPG','IMG_2687.JPG','IMG_2688.JPG',
-      'IMG_2690.JPG','IMG_2691.JPG'
-    ],
+    folder: 'MINI',
+    photos: ['正2024 MINI Cabrio JCW敞篷車 : 北極白:里程15000公里.jpg'],
     specs: {
       year: '2024',
-      mileage: '—',
+      mileage: '15,000 公里',
       transmission: '自排',
       fuel: '汽油',
       location: '新竹',
       origin: '—',
-      exteriorColor: '—',
+      exteriorColor: '北極白',
       interiorColor: '—',
     },
     price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1c7mLEjkLF/',
   },
 
   {
