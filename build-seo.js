@@ -44,9 +44,56 @@ function carCard(car){
 }
 const grid = status => byStatus(status).map(carCard).join('') + '\n    ';
 
-// MINI Clubman 指南頁（mini-clubman-jcw-guide.html）用的車卡
-const isClubman = c => c.brand === 'mini' && /CLUBMAN/i.test(c.title + ' ' + (c.subtitle || ''));
-const clubmanGrid = status => CARS.filter(c => c.status === status && isClubman(c)).map(carCard).join('') + '\n    ';
+// ============================================================
+// 車款購買指南：每個車系一頁，在店車、成交紀錄自動帶入
+// 新增指南時在這裡加一筆，test 決定哪些車屬於這個車系
+// ============================================================
+const nameOf = c => (c.title + ' ' + (c.subtitle || '')).toUpperCase();
+const GUIDES = [
+  { file: 'mini-clubman-jcw-guide.html', label: 'MINI Clubman JCW 購買指南', blurb: '第二代 Clubman（F54）歷年改款、JCW 與 Cooper S、末代 Untold Edition、看車重點', test: c => c.brand === 'mini' && /CLUBMAN/.test(nameOf(c)) },
+  { file: 'mini-jcw-guide.html', label: 'MINI JCW 車系購買指南', blurb: 'JCW Hatch、Cabrio、Countryman 新舊世代差異、JCW 與 Cooper S、看車重點', test: c => c.brand === 'mini' && !/CLUBMAN/.test(nameOf(c)) },
+  { file: 'mercedes-glc-guide.html', label: '賓士 GLC／AMG GLC 43 購買指南', blurb: 'GLC 300 與 AMG GLC 43、SUV 與 Coupe、新舊世代差異、看車重點', test: c => c.brand === 'benz' && /GLC/.test(nameOf(c)) },
+  { file: 'mercedes-gle-guide.html', label: '賓士 GLE 450／AMG GLE 53 購買指南', blurb: 'GLE 450 與 AMG GLE 53、SUV 與 Coupe、小改款差異、看車重點', test: c => c.brand === 'benz' && /GLE/.test(nameOf(c)) },
+  { file: 'mercedes-glb-guide.html', label: '賓士 GLB 250／AMG GLB 35 購買指南', blurb: 'GLB 250 與 AMG GLB 35、七人座、小改款差異、看車重點', test: c => c.brand === 'benz' && /GLB/.test(nameOf(c)) },
+  { file: 'mercedes-amg-gt-4door-guide.html', label: 'Mercedes-AMG GT 四門跑車購買指南', blurb: 'AMG GT 43 與 GT 53 四門跑車、小改款差異、看車重點', test: c => c.brand === 'benz' && /\bGT\s?\d{2}\b/.test(nameOf(c)) },
+  { file: 'mercedes-e-class-guide.html', label: '賓士 E-Class E200／AMG E53 購買指南', blurb: 'W213 與 W214 世代差異、E 200 與 AMG E 53、看車重點', test: c => c.brand === 'benz' && /\bE\s?(200|220|250|300|350|450|43|53|63)\b/.test(nameOf(c)) },
+  { file: 'mercedes-c-coupe-guide.html', label: '賓士 C-Class Coupe 購買指南', blurb: 'C 180／C 200／C 300 Coupe、AMG Line 與 AMG 車型差異、小改款、看車重點', test: c => c.brand === 'benz' && /\bC\s?\d{2,3}\b/.test(nameOf(c)) && /COUPE/.test(nameOf(c)) },
+  { file: 'mercedes-amg-cla45-guide.html', label: 'Mercedes-AMG CLA 45 S 購買指南', blurb: 'CLA 45 與 CLA 45 S、M139 引擎、小改款差異、看車重點', test: c => c.brand === 'benz' && /CLA/.test(nameOf(c)) },
+  { file: 'porsche-macan-guide.html', label: '保時捷 Macan 購買指南', blurb: 'Macan、Macan S、GTS 三個階段的差異、選配與看車重點', test: c => c.brand === 'porsche' && /MACAN/.test(nameOf(c)) },
+  { file: 'porsche-718-guide.html', label: '保時捷 718 Boxster／Cayman 購買指南', blurb: '718 Boxster 與 Cayman、S 與 GTS 4.0、手排與 PDK、看車重點', test: c => c.brand === 'porsche' && /718/.test(nameOf(c)) },
+];
+const guideOf = c => GUIDES.find(g => g.test(c));
+const guideCars = (g, statuses) => CARS.filter(c => statuses.includes(c.status) && g.test(c));
+const guideGrid = (g, statuses) => guideCars(g, statuses).map(carCard).join('') + '\n    ';
+// 沒有車的區塊加上 hidden，有車時拿掉
+function toggleSection(file, id, hide) {
+  if (!fs.existsSync(file)) return;
+  let s = fs.readFileSync(file, 'utf8');
+  const re = new RegExp('<section class="guide-section" id="' + id + '"( hidden)?>');
+  if (!re.test(s)) return;
+  s = s.replace(re, `<section class="guide-section" id="${id}"${hide ? ' hidden' : ''}>`);
+  fs.writeFileSync(file, s);
+}
+function bakeGuides() {
+  for (const g of GUIDES) {
+    if (!fs.existsSync(g.file)) { console.log('  SKIP (檔案不存在):', g.file); continue; }
+    const live = guideCars(g, ['in-stock', 'coming']), sold = guideCars(g, ['sold']);
+    inject(g.file, 'data-ssg="guide-in-stock"', live.length ? guideGrid(g, ['in-stock', 'coming'])
+      : `\n      <p class="calc-empty" style="grid-column:1/-1;">目前在店沒有這個車系的現車。可以委託我們代尋，或先看看<a href="inventory.html">其他在店車款</a>。</p>\n    `);
+    inject(g.file, 'data-ssg="guide-sold"', guideGrid(g, ['sold']));
+    toggleSection(g.file, 'sold', !sold.length);
+  }
+}
+const guideList = () => GUIDES.filter(g => fs.existsSync(g.file)).map(g => {
+  const live = guideCars(g, ['in-stock', 'coming']).length, sold = guideCars(g, ['sold']).length;
+  const counts = [live ? `在店與即將到港 ${live} 台` : '目前無現車，可代尋', sold ? `成交紀錄 ${sold} 台` : ''].filter(Boolean).join('・');
+  return `
+        <a class="guide-card" href="${g.file}">
+          <span class="guide-card-title">${esc(g.label)}</span>
+          <span class="guide-card-blurb">${esc(g.blurb)}</span>
+          <span class="guide-card-meta">${counts}</span>
+        </a>`;
+}).join('') + '\n      ';
 
 // 英文頁（en/）用的車卡：頁面有 <base href="../">，連結與照片路徑和中文頁相同
 function enCard(car){
@@ -225,8 +272,8 @@ function carBody(c) {
     <section class="detail-intro">
       <h2>車輛介紹</h2>
       <p>${esc(intro)}</p>
-      <p>${trust}</p>${isClubman(c) ? `
-      <p>想比較 Clubman 各年式、JCW 與 Cooper S 的差異，或了解末代 Untold Edition，請看 <a href="mini-clubman-jcw-guide.html">MINI Clubman JCW 外匯車購買指南</a>。</p>` : ''}
+      <p>${trust}</p>${guideOf(c) && fs.existsSync(guideOf(c).file) ? `
+      <p>想比較這個車系的年式、車型差異與看車重點，請看 <a href="${guideOf(c).file}">${esc(guideOf(c).label)}</a>。</p>` : ''}
     </section>
 
     <div class="detail-specs">
@@ -349,7 +396,8 @@ ${rows.map(([k, v]) => `        <tr><th scope="row">${k}</th><td>${v}</td></tr>`
 const STATIC_PAGES = [
   ['', '1.0'], ['inventory.html', '0.9'], ['incoming.html', '0.8'], ['import-guide.html', '0.9'], ['services.html', '0.8'],
   ['sold.html', '0.7'], ['about.html', '0.7'], ['maintenance.html', '0.5'], ['contact.html', '0.6'],
-  ['import-tax-calculator.html', '0.8'], ['mini-clubman-jcw-guide.html', '0.8'],
+  ['import-tax-calculator.html', '0.8'], ['guides.html', '0.8'],
+  ...GUIDES.filter(g => fs.existsSync(g.file)).map(g => [g.file, '0.8']),
   ['en/', '0.8'], ['en/buying-a-car-in-taiwan.html', '0.8'],
 ];
 function buildSitemap() {
@@ -418,7 +466,7 @@ function buildLlmsTxt() {
 - [已售車款](${SITE}sold.html)：歷年成交紀錄
 - [外匯車進口全攻略](${SITE}import-guide.html)：進口流程、費用組成、時程與常見問題
 - [外匯車進口稅費試算器](${SITE}import-tax-calculator.html)：依官方稅率試算關稅、貨物稅、營業稅，附公式、試算範例、奢侈稅門檻與每年牌照稅、公路養管費
-- [MINI Clubman JCW 外匯車購買指南](${SITE}mini-clubman-jcw-guide.html)：第二代 Clubman（F54）歷年改款、JCW 與 Cooper S 差異、末代 Untold Edition、購車檢查重點、在店車與成交紀錄
+- [車款購買指南總覽](${SITE}guides.html)：各車系的世代差異、規格、看車重點，附在店車與成交紀錄
 - [估車收車服務](${SITE}services.html)：二手車估價、收購、換購折抵、到府收車
 - [保養資訊](${SITE}maintenance.html)：進口車保養建議
 - [關於我們](${SITE}about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
@@ -428,6 +476,10 @@ function buildLlmsTxt() {
 
 - [FUN CAR in English](${SITE}en/)：Import and used car dealer in Hsinchu for international residents; cars in stock, phone and LINE in English
 - [Buying a car in Taiwan as a foreigner](${SITE}en/buying-a-car-in-taiwan.html)：documents, registration, driver's licence, insurance, annual taxes, selling when you leave Taiwan
+
+## 車款購買指南
+
+${GUIDES.filter(g => fs.existsSync(g.file)).map(g => `- [${g.label}](${SITE}${g.file})：${g.blurb}`).join('\n')}
 
 ## 機器可讀資料
 
@@ -451,8 +503,9 @@ inject('inventory.html',  'data-car-grid="in-stock"', grid('in-stock'));
 inject('sold.html',       'data-car-grid="sold"',     grid('sold'));
 inject('incoming.html',   'data-car-grid="coming"',   grid('coming'));
 inject('about.html',      'data-fact-card',           factCard());
-inject('mini-clubman-jcw-guide.html', 'data-ssg="clubman-in-stock"', clubmanGrid('in-stock'));
-inject('mini-clubman-jcw-guide.html', 'data-ssg="clubman-sold"',     clubmanGrid('sold'));
+bakeGuides();
+inject('guides.html',     'data-ssg="guide-list"',    guideList());
+inject('services.html',   'data-ssg="sell-sold"',     byStatus('sold').slice(0, 8).map(carCard).join('') + '\n    ');
 inject('en/index.html',   'data-ssg="en-in-stock"',   enGrid('in-stock'));
 inject('en/index.html',   'data-ssg="en-coming"',     enGrid('coming'));
 buildCarPages();

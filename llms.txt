@@ -21,7 +21,7 @@
 - [已售車款](https://www.funcar-hsinchu.com.tw/sold.html)：歷年成交紀錄
 - [外匯車進口全攻略](https://www.funcar-hsinchu.com.tw/import-guide.html)：進口流程、費用組成、時程與常見問題
 - [外匯車進口稅費試算器](https://www.funcar-hsinchu.com.tw/import-tax-calculator.html)：依官方稅率試算關稅、貨物稅、營業稅，附公式、試算範例、奢侈稅門檻與每年牌照稅、公路養管費
-- [MINI Clubman JCW 外匯車購買指南](https://www.funcar-hsinchu.com.tw/mini-clubman-jcw-guide.html)：第二代 Clubman（F54）歷年改款、JCW 與 Cooper S 差異、末代 Untold Edition、購車檢查重點、在店車與成交紀錄
+- [車款購買指南總覽](https://www.funcar-hsinchu.com.tw/guides.html)：各車系的世代差異、規格、看車重點，附在店車與成交紀錄
 - [估車收車服務](https://www.funcar-hsinchu.com.tw/services.html)：二手車估價、收購、換購折抵、到府收車
 - [保養資訊](https://www.funcar-hsinchu.com.tw/maintenance.html)：進口車保養建議
 - [關於我們](https://www.funcar-hsinchu.com.tw/about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
@@ -31,6 +31,18 @@
 
 - [FUN CAR in English](https://www.funcar-hsinchu.com.tw/en/)：Import and used car dealer in Hsinchu for international residents; cars in stock, phone and LINE in English
 - [Buying a car in Taiwan as a foreigner](https://www.funcar-hsinchu.com.tw/en/buying-a-car-in-taiwan.html)：documents, registration, driver's licence, insurance, annual taxes, selling when you leave Taiwan
+
+## 車款購買指南
+
+- [MINI Clubman JCW 購買指南](https://www.funcar-hsinchu.com.tw/mini-clubman-jcw-guide.html)：第二代 Clubman（F54）歷年改款、JCW 與 Cooper S、末代 Untold Edition、看車重點
+- [MINI JCW 車系購買指南](https://www.funcar-hsinchu.com.tw/mini-jcw-guide.html)：JCW Hatch、Cabrio、Countryman 新舊世代差異、JCW 與 Cooper S、看車重點
+- [賓士 GLC／AMG GLC 43 購買指南](https://www.funcar-hsinchu.com.tw/mercedes-glc-guide.html)：GLC 300 與 AMG GLC 43、SUV 與 Coupe、新舊世代差異、看車重點
+- [賓士 GLE 450／AMG GLE 53 購買指南](https://www.funcar-hsinchu.com.tw/mercedes-gle-guide.html)：GLE 450 與 AMG GLE 53、SUV 與 Coupe、小改款差異、看車重點
+- [Mercedes-AMG GT 四門跑車購買指南](https://www.funcar-hsinchu.com.tw/mercedes-amg-gt-4door-guide.html)：AMG GT 43 與 GT 53 四門跑車、小改款差異、看車重點
+- [賓士 E-Class E200／AMG E53 購買指南](https://www.funcar-hsinchu.com.tw/mercedes-e-class-guide.html)：W213 與 W214 世代差異、E 200 與 AMG E 53、看車重點
+- [賓士 C-Class Coupe 購買指南](https://www.funcar-hsinchu.com.tw/mercedes-c-coupe-guide.html)：C 180／C 200／C 300 Coupe、AMG Line 與 AMG 車型差異、小改款、看車重點
+- [保時捷 Macan 購買指南](https://www.funcar-hsinchu.com.tw/porsche-macan-guide.html)：Macan、Macan S、GTS 三個階段的差異、選配與看車重點
+- [保時捷 718 Boxster／Cayman 購買指南](https://www.funcar-hsinchu.com.tw/porsche-718-guide.html)：718 Boxster 與 Cayman、S 與 GTS 4.0、手排與 PDK、看車重點
 
 ## 機器可讀資料
 
