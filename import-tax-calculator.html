@@ -85,20 +85,18 @@
           <label for="cCurrency">海外車價幣別</label>
           <select id="cCurrency">
             <option value="TWD">新台幣 TWD</option>
-            <option value="USD" selected>美元 USD</option>
-            <option value="JPY">日圓 JPY</option>
+            <option value="JPY" selected>日圓 JPY</option>
             <option value="KRW">韓圓 KRW</option>
-            <option value="CAD">加幣 CAD</option>
             <option value="EUR">歐元 EUR</option>
           </select>
         </div>
         <div>
           <label for="cPrice">海外車價</label>
-          <input id="cPrice" type="number" inputmode="decimal" min="0" step="any" value="28000">
+          <input id="cPrice" type="number" inputmode="decimal" min="0" step="any" value="4300000">
         </div>
         <div>
           <label for="cRate">匯率（1 單位外幣 = 新台幣）</label>
-          <input id="cRate" type="number" inputmode="decimal" min="0" step="any" value="32">
+          <input id="cRate" type="number" inputmode="decimal" min="0" step="any" value="0.21">
           <p class="calc-hint">預設值只是範例，請填當天的匯率。</p>
         </div>
         <div>
@@ -206,7 +204,7 @@
 <section class="guide-section" id="used-car-value">
   <div class="container">
     <h2>進口舊車的完稅價格怎麼核定</h2>
-    <p>進口舊車的完稅價格由海關依關稅法核定，以海關認定的型式年份與配備為準。無法用一般方式核估時，海關會參考同年份新車的價格扣除折舊；北美來源的車可比對 Kelley Blue Book，查不到時自 2026 年 1 月 1 日起改用 J.D. Power 的價格，取較低者核估。</p>
+    <p>進口舊車的完稅價格由海關依關稅法核定，以海關認定的型式年份與配備為準。無法用一般方式核估時，海關會參考同年份新車的價格扣除折舊後核估。</p>
     <p>所以同一台車，報關的完稅價格不一定等於你在海外買車的成交價。試算器用你輸入的車價計算，實際以海關核定為準。</p>
   </div>
 </section>
@@ -215,7 +213,6 @@
   <div class="container">
     <h2>特殊情況</h2>
     <ul>
-      <li><strong>美國製造的車：</strong>台美對等貿易協定在 2026 年 2 月 12 日簽署，美製小客車關稅預計從 17.5% 降為 0%，但必須經立法院審議、修正海關進口稅則後才會生效。截至 2026 年 11 月尚未生效，進口時仍以 17.5% 報關。</li>
       <li><strong>純電動車：</strong>貨物稅優惠延長到 2030 年 12 月 31 日，完稅價格 140 萬元以下的部分免徵、超過的部分減半，進口時先繳再申請退稅。進口舊電動車能否適用，請洽詢。</li>
       <li><strong>油電混合車：</strong>只有符合特定條件的車款能減半徵收貨物稅，試算器以一般稅率計算，實際以海關核定為準。</li>
       <li><strong>進口許可：</strong>未向國際貿易署登記的個人或廠商，進口 FOB 價格超過 2 萬美元的小客車，要先申請輸入許可證。</li>
@@ -241,9 +238,8 @@
     <div class="faq-list">
       <details><summary>進口車要繳哪些稅？</summary><p>進口小客車要繳進口關稅 17.5%、貨物稅 25%（2,000cc 以下）或 30%（2,001cc 以上）、營業稅 5%，另收推廣貿易服務費 0.04%。含稅價格達 300 萬元的車，還要繳 10% 特種貨物及勞務稅。</p></details>
       <details><summary>進口車稅金大約佔車價多少？</summary><p>以完稅價格（海外車價加運費、保險費）計算，2,000cc 以下車款的稅金合計約為 54.3%，2,001cc 以上約為 60.4%。例如 2.0 升、完稅價格 100 萬元的車，稅金約 54.3 萬元。若含稅價格達 300 萬元，還要再加 10% 奢侈稅。</p></details>
-      <details><summary>進口舊車和新車的關稅一樣嗎？</summary><p>一樣。小客車不論新舊，進口關稅都是 17.5%。差別在完稅價格：舊車由海關依型式年份與配備核定，必要時參考新車價格扣除折舊，或比對 Kelley Blue Book、J.D. Power 的價格。</p></details>
+      <details><summary>進口舊車和新車的關稅一樣嗎？</summary><p>一樣。小客車不論新舊，進口關稅都是 17.5%。差別在完稅價格：舊車由海關依型式年份與配備核定，必要時參考同年份新車價格扣除折舊。</p></details>
       <details><summary>進口車奢侈稅的門檻是多少？</summary><p>特種貨物及勞務稅適用於含稅價格達 300 萬元的 9 人座以下小客車，稅率 10%，對全額課稅。換算回完稅價格，2,000cc 以下約超過 194.5 萬元、2,001cc 以上約超過 187 萬元就會被課。</p></details>
-      <details><summary>美國進口車現在是零關稅嗎？</summary><p>還不是。台美對等貿易協定在 2026 年 2 月 12 日簽署，美製小客車關稅預計從 17.5% 降為 0%，但要經立法院審議並修正海關進口稅則才會生效。截至 2026 年 11 月尚未生效。</p></details>
       <details><summary>2.0 升進口車每年要繳多少牌照稅和燃料費？</summary><p>1,801–2,400cc 的自用小客車，每年使用牌照稅 11,230 元，公路使用養護安全管理費（原汽車燃料使用費）6,180 元，合計 17,410 元。</p></details>
       <details><summary>試算器的結果就是到台總價嗎？</summary><p>不是。試算器只計算法定稅金。到台總價還包括海運與保險、車輛安全審驗、排氣檢驗、耗能證明、領牌規費與車商服務費。貿鑫國際車業在下標前會逐項列出完整總價，可來電 0922-782-597 洽詢。</p></details>
     </div>
@@ -263,7 +259,6 @@
       <li>使用牌照稅法第 6 條附表；財政部稅務入口網</li>
       <li>交通部公路局：汽車燃料使用費更名為公路使用養護安全管理費（2025 年 12 月公路法修正）；費額表依交通部 2012 年 12 月 26 日交路字第 10150191851 號令</li>
       <li>財政部新聞稿：電動車使用牌照稅免徵延長；新竹市、新竹縣延長至 2030 年 12 月 31 日</li>
-      <li>中央社、經濟日報、工商時報：台美對等貿易協定簽署與生效進度（2026 年）</li>
     </ul>
   </div>
 </section>
@@ -274,7 +269,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">FUN CAR</div>
-        <p class="footer-desc">貿鑫國際車業 FUN CAR · 新竹在地進口外匯車商，專營外匯車買賣、新古車引進與客製化進口尋車。實體店面位於新竹市北區吉羊路22巷55之3號，鄰近竹科、竹北，專精韓規賓士、加規美規雙B 與 MINI 性能車系。</p>
+        <p class="footer-desc">貿鑫國際車業 FUN CAR · 新竹在地進口外匯車商，專營外匯車買賣、新古車引進與客製化進口尋車。實體店面位於新竹市北區吉羊路22巷55之3號，鄰近竹科、竹北，車源以日本、韓國與國內二手車為主，專精賓士、保時捷與 MINI 性能車系。</p>
       </div>
       <div>
         <div class="footer-heading">車輛</div>
@@ -371,7 +366,6 @@
     html += row('領牌後每年公路養管費（汽油車）', rf ? fmt(rf) : '請查監理單位費額表');
     html += '</tbody></table></div>';
     if (fuel === 'hybrid') html += '<p class="calc-note">油電混合車：符合特定條件的車款貨物稅可減半，此處以一般稅率計算，實際以海關核定為準。</p>';
-    if (cur === 'USD') html += '<p class="calc-note">美國製造的車：台美對等貿易協定的零關稅尚未生效（截至 2026 年 11 月），仍以 17.5% 計算。</p>';
     out.innerHTML = html;
   }
   form.addEventListener('input', run);
@@ -451,7 +445,7 @@
       "name": "進口舊車和新車的關稅一樣嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "一樣。小客車不論新舊，進口關稅都是 17.5%。差別在完稅價格：舊車由海關依型式年份與配備核定，必要時參考新車價格扣除折舊，或比對 Kelley Blue Book、J.D. Power 的價格。"
+        "text": "一樣。小客車不論新舊，進口關稅都是 17.5%。差別在完稅價格：舊車由海關依型式年份與配備核定，必要時參考同年份新車價格扣除折舊。"
       }
     },
     {
@@ -460,14 +454,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "特種貨物及勞務稅適用於含稅價格達 300 萬元的 9 人座以下小客車，稅率 10%，對全額課稅。換算回完稅價格，2,000cc 以下約超過 194.5 萬元、2,001cc 以上約超過 187 萬元就會被課。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "美國進口車現在是零關稅嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "還不是。台美對等貿易協定在 2026 年 2 月 12 日簽署，美製小客車關稅預計從 17.5% 降為 0%，但要經立法院審議並修正海關進口稅則才會生效。截至 2026 年 11 月尚未生效。"
       }
     },
     {

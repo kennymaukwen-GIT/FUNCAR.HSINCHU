@@ -233,7 +233,7 @@ function carBody(c) {
     : c.status === 'coming'
     ? `${lead}，即將到港，現正接受預訂。到港前可先來電洽詢規格、預訂方式與交車時程。`
     : `${lead}，目前在 FUN CAR 貿鑫國際車業新竹展間現車展示，歡迎預約賞車或來電 ${DEALER.phone} 洽詢價格。`;
-  const trust = '貿鑫每輛進口車都提供第三方車況鑑定履歷，由 Goo 官方鑑定專員在店實車鑑定；美規車款另附 CARFAX 車輛歷史報告。';
+  const trust = '貿鑫每輛車都由 Goo 官方鑑定專員在店實車鑑定，出具 Goo 鑑定證書。貿鑫的車源以日本、韓國與國內二手車為主。';
 
   const sp = c.specs || {};
   const v = x => esc(clean(x) || '洽詢');
@@ -376,7 +376,7 @@ function factCard() {
     ['服務項目', '外匯車進口引進、在店現車買賣、二手車估價收購、專員到府收車'],
     ['服務地區', '新竹市、竹北、新竹科學園區周邊，全台可跨區服務'],
     ['主力品牌', 'MINI、Mercedes-Benz／Mercedes-AMG、Porsche'],
-    ['車況鑑定', 'Goo 官方鑑定專員在店實車鑑定；美規車款附 CARFAX 車輛歷史報告'],
+    ['車況鑑定', 'Goo 官方鑑定專員在店實車鑑定，出具 Goo 鑑定證書'],
     ['購車保障', '實車實價、第三方權威鑑定認證、無重大事故泡水保證、完整售後保固服務'],
     ['Google 評論', `${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論（${DEALER.googleAsOf}）・<a href="${DEALER.googleMaps}" target="_blank" rel="noopener">在 Google 地圖查看</a>`],
     ['8891 商家頁', `<a href="${DEALER.site8891}" target="_blank" rel="noopener">貿鑫國際有限公司</a>`],
@@ -445,7 +445,7 @@ function buildLlmsTxt() {
   const sec = (title, s) => byStatus(s).length ? `## ${title}（${byStatus(s).length} 台）\n\n${byStatus(s).map(line).join('\n')}\n` : '';
   const txt = `# FUN CAR 貿鑫國際車業
 
-> 新竹在地進口外匯車商。公司登記名稱貿鑫國際有限公司，統一編號 ${DEALER.taxID}，${DEALER.founded}設立。專營外匯車進口引進、在店現車買賣、二手車估價收購，主力品牌為 MINI、Mercedes-Benz／Mercedes-AMG、Porsche。每輛車提供 Goo 官方在店鑑定，美規車款另附 CARFAX 車輛歷史報告。Google 商家評分 ${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論。
+> 新竹在地進口外匯車商。公司登記名稱貿鑫國際有限公司，統一編號 ${DEALER.taxID}，${DEALER.founded}設立。專營外匯車進口引進、在店現車買賣、二手車估價收購，主力品牌為 MINI、Mercedes-Benz／Mercedes-AMG、Porsche。車源以日本、韓國與國內二手車為主，每輛車由 Goo 官方鑑定專員在店鑑定。Google 商家評分 ${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論。
 
 ## 公司資料
 
