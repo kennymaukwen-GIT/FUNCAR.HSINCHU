@@ -1,0 +1,14 @@
+{
+  "name": "funcar-content-agent",
+  "private": true,
+  "description": "FUN CAR 內容 agent：從 inventory.json 產生各平台貼文草稿，事實檢查後經人工核准再發佈",
+  "scripts": {
+    "plan": "node agent.js plan",
+    "draft": "node agent.js draft",
+    "draft:llm": "node agent.js draft --llm",
+    "publish": "node agent.js publish"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "*"
+  }
+}
