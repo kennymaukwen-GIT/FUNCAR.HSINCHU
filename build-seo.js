@@ -505,6 +505,7 @@ inject('incoming.html',   'data-car-grid="coming"',   grid('coming'));
 inject('about.html',      'data-fact-card',           factCard());
 bakeGuides();
 inject('guides.html',     'data-ssg="guide-list"',    guideList());
+inject('services.html',   'data-ssg="sell-sold"',     byStatus('sold').slice(0, 8).map(carCard).join('') + '\n    ');
 inject('en/index.html',   'data-ssg="en-in-stock"',   enGrid('in-stock'));
 inject('en/index.html',   'data-ssg="en-coming"',     enGrid('coming'));
 buildCarPages();
