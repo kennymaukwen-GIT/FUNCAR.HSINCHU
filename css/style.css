@@ -691,17 +691,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .page-hero.inventory-hero {
   background:
     linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.7) 100%),
-    url('../images/inventory-hero.jpg') center/cover no-repeat;
+    url('../images/hero/inventory.jpg') center/cover no-repeat;
 }
 .page-hero.sold-hero {
   background:
     linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.7) 100%),
-    url('../images/sold-hero.jpg') center/cover no-repeat;
+    url('../images/hero/sold.jpg') center/cover no-repeat;
 }
 .page-hero.services-hero {
   background:
     linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.7) 100%),
-    url('../images/services-hero.jpg') center/cover no-repeat;
+    url('../images/hero/services.jpg') center/cover no-repeat;
 }
 /* Image-backed page heroes keep light text over the photo */
 .page-hero.inventory-hero .page-hero-eyebrow,
@@ -1839,7 +1839,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .finder-box-inventory {
   background-image:
     linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.55) 100%),
-    url('../images/在店車款cover%20.jpg');
+    url('../images/hero/in-stock.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -1933,8 +1933,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: var(--transition);
 }
 .cta-block:hover::before { background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.8) 100%); }
-.cta-block-cars { background-image: url('../images/inventory-hero.jpg'); }
-.cta-block-sell { background-image: url('../images/services-hero.jpg'); }
+.cta-block-cars { background-image: url('../images/hero/inventory.jpg'); }
+.cta-block-sell { background-image: url('../images/hero/services.jpg'); }
 .cta-block-inner { position: relative; z-index: 1; }
 .cta-block .section-eyebrow.light { color: rgba(255,255,255,0.8); }
 .cta-block-title {
