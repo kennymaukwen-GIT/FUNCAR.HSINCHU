@@ -2139,3 +2139,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .guide .car-grid, .guide-section .car-grid { margin-top: 16px; }
 .lang-link { font-family: var(--font-en); letter-spacing: 1px; }
+
+/* 車款購買指南總覽 */
+.guide-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 8px 0 24px; }
+.guide-card { display: flex; flex-direction: column; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; text-decoration: none; color: inherit; transition: border-color var(--transition), transform var(--transition); }
+.guide-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.guide-card-title { font-size: 17px; font-weight: 600; color: var(--text-primary); line-height: 1.5; }
+.guide-card-blurb { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.guide-card-meta { font-size: 12px; color: var(--accent-hover); letter-spacing: 1px; margin-top: auto; }
