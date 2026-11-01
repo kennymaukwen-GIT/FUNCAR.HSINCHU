@@ -263,7 +263,8 @@ function initFilters() {
       e.preventDefault();
       const target = tab.dataset.filter;
       tabs.forEach((t) => t.classList.toggle('active', t === tab));
-      const cards = document.querySelectorAll('.car-card');
+      const scope = document.querySelector('[data-car-grid="in-stock"]') || document;
+      const cards = scope.querySelectorAll('.car-card');
       cards.forEach((card) => {
         if (target === 'all' || card.dataset.brand === target) {
           card.style.display = '';
@@ -271,7 +272,7 @@ function initFilters() {
           card.style.display = 'none';
         }
       });
-      const visible = document.querySelectorAll('.car-card:not([style*="display: none"])').length;
+      const visible = scope.querySelectorAll('.car-card:not([style*="display: none"])').length;
       const count = document.querySelector('.filter-count');
       if (count) count.textContent = `共 ${visible} 輛`;
     });

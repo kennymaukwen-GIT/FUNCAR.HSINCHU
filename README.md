@@ -6,7 +6,7 @@
 
 ```
 .
-├── index.html / inventory.html / sold.html / incoming.html …   各頁面
+├── index.html / inventory.html（含即將到港）/ sold.html / about.html（含聯絡）…   各頁面
 ├── css/style.css          全站樣式
 ├── js/cars.js             ★ 車輛資料庫（新增 / 修改車輛只改這個檔）
 ├── js/main.js             頁面邏輯（卡片、輪播、品牌展示…）
@@ -15,7 +15,7 @@
 ├── en/                    英文頁（給竹科外籍人士）：index.html 在店車由 build-seo.js 自動產生
 ├── car-detail.html        車輛內頁的共用模板（本身不收錄，舊網址會轉到 cars/<id>.html）
 ├── cars/<id>.html         ★ 每台車的靜態內頁，由 build-seo.js 自動產生，不要手動修改
-├── vercel.json            Vercel 轉址設定（舊車輛網址、舊聯絡頁）
+├── vercel.json            Vercel 轉址設定（舊車輛網址、已合併的舊頁面）
 ├── llms.txt               給 AI 讀的網站摘要，自動產生
 ├── inventory.json         機器可讀的完整車輛資料，自動產生
 ├── server.py              本機預覽用的簡易伺服器

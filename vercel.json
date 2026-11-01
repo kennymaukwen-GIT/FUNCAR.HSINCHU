@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/models.html",
-      "destination": "/contact.html",
+      "destination": "/about.html#contact",
       "permanent": true
     },
     {
@@ -20,6 +20,16 @@
     {
       "source": "/import-tax-calculator.html",
       "destination": "/import-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/incoming.html",
+      "destination": "/inventory.html#coming",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/about.html#contact",
       "permanent": true
     }
   ]

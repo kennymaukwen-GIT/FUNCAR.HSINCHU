@@ -33,4 +33,4 @@
 
 ## 轉址
 
-`vercel.json` 設定了舊網址的永久轉址：`car-detail.html?id=<車輛id>` 轉到 `cars/<車輛id>.html`，`models.html` 轉到 `contact.html`。不要刪除。
+`vercel.json` 設定了舊網址的永久轉址：`car-detail.html?id=<車輛id>` 轉到 `cars/<車輛id>.html`，`models.html` 與 `contact.html` 轉到 `about.html#contact`，`incoming.html` 轉到 `inventory.html#coming`，`import-tax-calculator.html` 轉到 `import-guide.html`。不要刪除。

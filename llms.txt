@@ -17,14 +17,13 @@
 ## 主要頁面
 
 - [在店車款](https://www.funcar-hsinchu.com.tw/inventory.html)：目前在新竹展間的現車
-- [即將到港](https://www.funcar-hsinchu.com.tw/incoming.html)：已訂購、即將到台的車款，接受預訂
-- [已售車款](https://www.funcar-hsinchu.com.tw/sold.html)：歷年成交紀錄
-- [外匯車進口全攻略](https://www.funcar-hsinchu.com.tw/import-guide.html)：進口流程、費用組成、時程與常見問題
+- [即將到港](https://www.funcar-hsinchu.com.tw/inventory.html#coming)：在店車款頁下方，已訂購、即將到台的車款，接受預訂
+- [成交紀錄](https://www.funcar-hsinchu.com.tw/sold.html)：歷年成交紀錄
+- [外匯代購](https://www.funcar-hsinchu.com.tw/import-guide.html)：日本、韓國車源代購進口流程、費用組成、時程與常見問題
 - [車款購買指南總覽](https://www.funcar-hsinchu.com.tw/guides.html)：各車系的世代差異、規格、看車重點，附在店車與成交紀錄
-- [估車收車服務](https://www.funcar-hsinchu.com.tw/services.html)：二手車估價、收購、換購折抵、到府收車
+- [高價收車](https://www.funcar-hsinchu.com.tw/services.html)：BMW、賓士、保時捷、MINI 等進口車估價收購、換車折抵、寄賣，全台到府看車
 - [保養資訊](https://www.funcar-hsinchu.com.tw/maintenance.html)：進口車保養建議
-- [關於我們](https://www.funcar-hsinchu.com.tw/about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
-- [聯絡我們](https://www.funcar-hsinchu.com.tw/contact.html)：地址、電話、地圖
+- [關於與聯絡](https://www.funcar-hsinchu.com.tw/about.html)：專營車款、Goo 鑑定、公司資料一覽、地址、電話、地圖
 
 ## English pages
 

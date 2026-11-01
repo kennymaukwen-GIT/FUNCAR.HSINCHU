@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@200;300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=79">
+<link rel="stylesheet" href="css/style.css?v=80">
   <!-- SEO metadata (auto) -->
   <link rel="canonical" href="https://www.funcar-hsinchu.com.tw/">
   <meta name="robots" content="index, follow">
@@ -41,7 +41,7 @@
     <a href="index.html" class="logo">
       <img src="images/logo.png" alt="FUN CAR" class="logo-img">
     </a>
-    <div class="header-spacer">貿鑫國際車業</div>
+    <a class="header-spacer header-call" href="tel:0922782597" aria-label="來電 0922-782-597"><span class="call-label">來電</span><span class="call-num">0922-782-597</span></a>
   </div>
 </header>
 
@@ -49,16 +49,12 @@
 <aside class="menu-panel" id="menuPanel" aria-hidden="true">
   <button class="menu-close" aria-label="Close">✕</button>
   <nav class="menu-nav">
-    <a href="index.html" class="active">首頁</a>
     <a href="inventory.html">在店車款</a>
-    <a href="incoming.html">即將到港</a>
-    <a href="sold.html">已售車款</a>
+    <a href="sold.html">成交紀錄</a>
+    <a href="services.html">高價收車</a>
     <a href="guides.html">車款指南</a>
-    <a href="import-guide.html">外匯車進口</a>
-    <a href="services.html">估車收車</a>
-    <a href="maintenance.html">保養資訊</a>
-    <a href="about.html">關於我們</a>
-    <a href="contact.html">聯絡我們</a>
+    <a href="import-guide.html">外匯代購</a>
+    <a href="about.html">關於與聯絡</a>
     <a href="en/index.html" lang="en" class="lang-link">English</a>
   </nav>
 </aside>
@@ -76,7 +72,7 @@
     </h1>
     <div class="hero-actions">
       <a href="about.html" class="btn btn-outline">關於我們</a>
-      <a href="contact.html" class="btn btn-outline">預約賞車</a>
+      <a href="about.html#contact" class="btn btn-outline">預約賞車</a>
     </div>
   </div>
   <a href="#finder" class="hero-scroll" aria-label="向下瀏覽">
@@ -101,7 +97,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </span>
     </a>
-    <a href="contact.html" class="finder-box">
+    <a href="about.html#contact" class="finder-box">
       <span class="finder-box-title">聯絡我們</span>
       <span class="finder-box-arrow" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -392,19 +388,18 @@
         <div class="footer-heading">車輛</div>
         <ul class="footer-list">
           <li><a href="inventory.html">在店車款</a></li>
-          <li><a href="incoming.html">即將到港</a></li>
-          <li><a href="sold.html">已售車款</a></li>
+          <li><a href="inventory.html#coming">即將到港</a></li>
+          <li><a href="sold.html">成交紀錄</a></li>
           <li><a href="guides.html">車款購買指南</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-heading">服務</div>
         <ul class="footer-list">
-          <li><a href="import-guide.html">外匯車進口</a></li>
-          <li><a href="services.html">估車收車</a></li>
+          <li><a href="services.html">高價收車</a></li>
+          <li><a href="import-guide.html">外匯代購</a></li>
           <li><a href="maintenance.html">保養資訊</a></li>
-          <li><a href="about.html">關於我們</a></li>
-          <li><a href="contact.html">聯絡我們</a></li>
+          <li><a href="about.html">關於與聯絡</a></li>
           <li><a href="en/index.html" lang="en">English</a></li>
         </ul>
       </div>
@@ -436,7 +431,7 @@
 </footer>
 
 <script src="js/cars.js?v=19"></script>
-<script src="js/main.js?v=42"></script>
+<script src="js/main.js?v=43"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

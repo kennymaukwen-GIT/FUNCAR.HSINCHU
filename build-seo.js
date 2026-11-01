@@ -174,8 +174,8 @@ const DEALER = {
 const BRAND_EN = { bmw: 'BMW', porsche: 'Porsche', benz: 'Mercedes-Benz', mini: 'MINI', other: '' };
 const STATUS = {
   'in-stock': { label: '在店車款', page: 'inventory.html', state: '在店現車', price: c => (c.price && c.price !== '電洽' ? c.price : '電洽') },
-  'coming':   { label: '即將到港', page: 'incoming.html',  state: '即將到港', price: () => '接受預訂' },
-  'sold':     { label: '已售車款', page: 'sold.html',      state: '已售出',   price: () => '已成交' },
+  'coming':   { label: '即將到港', page: 'inventory.html#coming',  state: '即將到港', price: () => '接受預訂' },
+  'sold':     { label: '成交紀錄', page: 'sold.html',      state: '已售出',   price: () => '已成交' },
 };
 const clean = v => (v != null && v !== '—' && String(v).trim()) ? String(v).trim() : null;
 const fullName = c => c.title + (c.subtitle ? ' ' + c.subtitle : '');
@@ -245,7 +245,7 @@ function carBody(c) {
 
   const cta = c.status === 'sold'
     ? `<a href="import-guide.html" class="btn btn-primary">委託客製代尋</a><a href="tel:${DEALER.tel}" class="btn btn-outline">來電洽詢 ${DEALER.phone}</a>`
-    : `<a href="tel:${DEALER.tel}" class="btn btn-primary">來電洽詢 ${DEALER.phone}</a><a href="contact.html" class="btn btn-outline">預約賞車</a>`;
+    : `<a href="tel:${DEALER.tel}" class="btn btn-primary">來電洽詢 ${DEALER.phone}</a><a href="about.html#contact" class="btn btn-outline">預約賞車</a>`;
 
   const rel = relatedCars(c);
   const relHtml = rel.length ? `
@@ -318,7 +318,7 @@ function carJsonLd(c) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: '首頁', item: SITE },
-      { '@type': 'ListItem', position: 2, name: st.label, item: SITE + st.page },
+      { '@type': 'ListItem', position: 2, name: st.label, item: SITE + st.page.split('#')[0] },
       { '@type': 'ListItem', position: 3, name: fullName(c), item: url },
     ],
   };
@@ -394,8 +394,8 @@ ${rows.map(([k, v]) => `        <tr><th scope="row">${k}</th><td>${v}</td></tr>`
 // sitemap.xml / inventory.json / llms.txt
 // ============================================================
 const STATIC_PAGES = [
-  ['', '1.0'], ['inventory.html', '0.9'], ['incoming.html', '0.8'], ['import-guide.html', '0.9'], ['services.html', '0.8'],
-  ['sold.html', '0.7'], ['about.html', '0.7'], ['maintenance.html', '0.5'], ['contact.html', '0.6'],
+  ['', '1.0'], ['inventory.html', '0.9'], ['import-guide.html', '0.9'], ['services.html', '0.8'],
+  ['sold.html', '0.7'], ['about.html', '0.7'], ['maintenance.html', '0.5'],
   ['guides.html', '0.8'],
   ...GUIDES.filter(g => fs.existsSync(g.file)).map(g => [g.file, '0.8']),
   ['en/', '0.8'], ['en/buying-a-car-in-taiwan.html', '0.8'],
@@ -462,14 +462,13 @@ function buildLlmsTxt() {
 ## 主要頁面
 
 - [在店車款](${SITE}inventory.html)：目前在新竹展間的現車
-- [即將到港](${SITE}incoming.html)：已訂購、即將到台的車款，接受預訂
-- [已售車款](${SITE}sold.html)：歷年成交紀錄
-- [外匯車進口全攻略](${SITE}import-guide.html)：進口流程、費用組成、時程與常見問題
+- [即將到港](${SITE}inventory.html#coming)：在店車款頁下方，已訂購、即將到台的車款，接受預訂
+- [成交紀錄](${SITE}sold.html)：歷年成交紀錄
+- [外匯代購](${SITE}import-guide.html)：日本、韓國車源代購進口流程、費用組成、時程與常見問題
 - [車款購買指南總覽](${SITE}guides.html)：各車系的世代差異、規格、看車重點，附在店車與成交紀錄
-- [估車收車服務](${SITE}services.html)：二手車估價、收購、換購折抵、到府收車
+- [高價收車](${SITE}services.html)：BMW、賓士、保時捷、MINI 等進口車估價收購、換車折抵、寄賣，全台到府看車
 - [保養資訊](${SITE}maintenance.html)：進口車保養建議
-- [關於我們](${SITE}about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
-- [聯絡我們](${SITE}contact.html)：地址、電話、地圖
+- [關於與聯絡](${SITE}about.html)：專營車款、Goo 鑑定、公司資料一覽、地址、電話、地圖
 
 ## English pages
 
@@ -500,7 +499,7 @@ inject('index.html',      'data-showcase-dots',       brandDots());
 inject('index.html',      'data-car-grid="sold"',     grid('sold'));
 inject('inventory.html',  'data-car-grid="in-stock"', grid('in-stock'));
 inject('sold.html',       'data-car-grid="sold"',     grid('sold'));
-inject('incoming.html',   'data-car-grid="coming"',   grid('coming'));
+inject('inventory.html',  'data-ssg="inventory-coming"', grid('coming'));
 inject('about.html',      'data-fact-card',           factCard());
 bakeGuides();
 inject('guides.html',     'data-ssg="guide-list"',    guideList());

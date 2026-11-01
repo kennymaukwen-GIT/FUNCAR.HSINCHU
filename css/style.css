@@ -2151,3 +2151,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* 估車收車：Facebook 粉專嵌入 */
 .fb-embed { display: flex; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
 .fb-embed iframe { max-width: 100%; border-radius: 8px; background: #fff; }
+
+/* 頁首右上角：來電按鈕 */
+.header-call { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid var(--border-hover); border-radius: 999px; color: var(--text-primary); text-decoration: none; letter-spacing: 1px; font-size: 13px; transition: border-color var(--transition), background var(--transition); white-space: nowrap; }
+.header-call:hover { border-color: var(--accent-hover); background: rgba(255,255,255,0.04); }
+.header-call .call-label { color: var(--accent-hover); font-weight: 600; letter-spacing: 2px; }
+.header.transparent:not(.scrolled) .header-call { border-color: rgba(255,255,255,0.5); }
+@media (max-width: 768px) {
+  .header-call { padding: 6px 12px; font-size: 12px; letter-spacing: 1px; }
+  .header-call .call-num { display: none; }
+}
