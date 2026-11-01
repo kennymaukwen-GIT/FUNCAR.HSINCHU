@@ -20,10 +20,17 @@
 - [即將到港](https://www.funcar-hsinchu.com.tw/incoming.html)：已訂購、即將到台的車款，接受預訂
 - [已售車款](https://www.funcar-hsinchu.com.tw/sold.html)：歷年成交紀錄
 - [外匯車進口全攻略](https://www.funcar-hsinchu.com.tw/import-guide.html)：進口流程、費用組成、時程與常見問題
+- [外匯車進口稅費試算器](https://www.funcar-hsinchu.com.tw/import-tax-calculator.html)：依官方稅率試算關稅、貨物稅、營業稅，附公式、試算範例、奢侈稅門檻與每年牌照稅、公路養管費
+- [MINI Clubman JCW 外匯車購買指南](https://www.funcar-hsinchu.com.tw/mini-clubman-jcw-guide.html)：第二代 Clubman（F54）歷年改款、JCW 與 Cooper S 差異、末代 Untold Edition、購車檢查重點、在店車與成交紀錄
 - [估車收車服務](https://www.funcar-hsinchu.com.tw/services.html)：二手車估價、收購、換購折抵、到府收車
 - [保養資訊](https://www.funcar-hsinchu.com.tw/maintenance.html)：進口車保養建議
 - [關於我們](https://www.funcar-hsinchu.com.tw/about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
 - [聯絡我們](https://www.funcar-hsinchu.com.tw/contact.html)：地址、電話、地圖
+
+## English pages
+
+- [FUN CAR in English](https://www.funcar-hsinchu.com.tw/en/)：Import and used car dealer in Hsinchu for international residents; cars in stock, phone and LINE in English
+- [Buying a car in Taiwan as a foreigner](https://www.funcar-hsinchu.com.tw/en/buying-a-car-in-taiwan.html)：documents, registration, driver's licence, insurance, annual taxes, selling when you leave Taiwan
 
 ## 機器可讀資料
 
