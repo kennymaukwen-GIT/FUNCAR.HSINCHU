@@ -8,9 +8,14 @@
     "telephone": "0922-782-597",
     "email": "michelle@maukwen.com.tw",
     "address": "新竹市北區吉羊路22巷55之3號",
-    "openingHours": "週一至週日 09:00–23:00",
+    "openingHours": "週一至週日 06:00–23:00",
     "googleMaps": "https://maps.app.goo.gl/r1JD8GTU861ZrX2D7",
-    "site8891": "https://www.8891.com.tw/findBuz-info-10987.html"
+    "site8891": "https://www.8891.com.tw/findBuz-info-10987.html",
+    "googleRating": {
+      "ratingValue": 5,
+      "reviewCount": 125,
+      "asOf": "2026 年 11 月"
+    }
   },
   "statusLegend": {
     "in-stock": "在店現車",

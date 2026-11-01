@@ -89,8 +89,11 @@ const DEALER = {
   tel: '0922782597',
   email: 'michelle@maukwen.com.tw',
   address: '新竹市北區吉羊路22巷55之3號',
-  hours: '週一至週日 09:00–23:00',
+  hours: '週一至週日 06:00–23:00',
   googleMaps: 'https://maps.app.goo.gl/r1JD8GTU861ZrX2D7',
+  googleRating: '5.0',          // Google 商家評分，變動時更新這三行
+  googleReviews: 125,
+  googleAsOf: '2026 年 11 月',
   site8891: 'https://www.8891.com.tw/findBuz-info-10987.html',
   facebook: 'https://www.facebook.com/p/FUN-CAR-%E8%B2%BF%E9%91%AB%E5%9C%8B%E9%9A%9B%E8%BB%8A%E6%A5%AD-100063469527149/',
   instagram: 'https://www.instagram.com/fun_car_hsinchu88/',
@@ -303,7 +306,7 @@ function factCard() {
     ['車況鑑定', 'Goo 官方鑑定專員在店實車鑑定；美規車款附 CARFAX 車輛歷史報告'],
     ['購車保障', '實車實價、第三方權威鑑定認證、無重大事故泡水保證、完整售後保固服務'],
     ['網站公開車輛紀錄', `在店現車 ${n('in-stock')} 台、即將到港 ${n('coming')} 台、已售成交 ${n('sold')} 台（${TODAY} 更新）`],
-    ['Google 評論', `<a href="${DEALER.googleMaps}" target="_blank" rel="noopener">在 Google 地圖查看</a>`],
+    ['Google 評論', `${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論（${DEALER.googleAsOf}）・<a href="${DEALER.googleMaps}" target="_blank" rel="noopener">在 Google 地圖查看</a>`],
     ['8891 商家頁', `<a href="${DEALER.site8891}" target="_blank" rel="noopener">貿鑫國際有限公司</a>`],
   ];
   return `
@@ -341,6 +344,7 @@ function buildInventoryJson() {
       name: DEALER.name, legalName: DEALER.legalName, taxID: DEALER.taxID, url: SITE,
       telephone: DEALER.phone, email: DEALER.email, address: DEALER.address, openingHours: DEALER.hours,
       googleMaps: DEALER.googleMaps, site8891: DEALER.site8891,
+      googleRating: { ratingValue: Number(DEALER.googleRating), reviewCount: DEALER.googleReviews, asOf: DEALER.googleAsOf },
     },
     statusLegend: { 'in-stock': '在店現車', coming: '即將到港，接受預訂', sold: '已售出，保留為成交紀錄' },
     priceNote: '價格為「電洽」的車輛請來電洽詢。',
@@ -366,7 +370,7 @@ function buildLlmsTxt() {
   const sec = (title, s) => byStatus(s).length ? `## ${title}（${byStatus(s).length} 台）\n\n${byStatus(s).map(line).join('\n')}\n` : '';
   const txt = `# FUN CAR 貿鑫國際車業
 
-> 新竹在地進口外匯車商。公司登記名稱貿鑫國際有限公司，統一編號 ${DEALER.taxID}，${DEALER.founded}設立。專營外匯車進口引進、在店現車買賣、二手車估價收購，主力品牌為 MINI、Mercedes-Benz／Mercedes-AMG、Porsche。每輛車提供 Goo 官方在店鑑定，美規車款另附 CARFAX 車輛歷史報告。
+> 新竹在地進口外匯車商。公司登記名稱貿鑫國際有限公司，統一編號 ${DEALER.taxID}，${DEALER.founded}設立。專營外匯車進口引進、在店現車買賣、二手車估價收購，主力品牌為 MINI、Mercedes-Benz／Mercedes-AMG、Porsche。每輛車提供 Goo 官方在店鑑定，美規車款另附 CARFAX 車輛歷史報告。Google 商家評分 ${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論。
 
 ## 公司資料
 
@@ -374,6 +378,7 @@ function buildLlmsTxt() {
 - 電話：${DEALER.phone}
 - Email：${DEALER.email}
 - 營業時間：${DEALER.hours}
+- Google 商家評分：${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論（${DEALER.googleAsOf}）
 - Google 地圖與評論：${DEALER.googleMaps}
 - 8891 商家頁：${DEALER.site8891}
 - Facebook：${DEALER.facebook}
