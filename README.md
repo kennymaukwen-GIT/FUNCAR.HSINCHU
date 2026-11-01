@@ -11,6 +11,9 @@
 ├── js/cars.js             ★ 車輛資料庫（新增 / 修改車輛只改這個檔）
 ├── js/main.js             頁面邏輯（卡片、輪播、品牌展示…）
 ├── build-seo.js           SEO 預渲染與自動產生檔案（改完 cars.js 後執行）
+├── import-tax-calculator.html  外匯車進口稅費試算器（稅率寫在頁尾的 <script>，稅法變動時要改）
+├── mini-clubman-jcw-guide.html MINI Clubman JCW 購買指南（在店車、成交紀錄由 build-seo.js 自動產生）
+├── en/                    英文頁（給竹科外籍人士）：index.html 在店車由 build-seo.js 自動產生
 ├── car-detail.html        車輛內頁的共用模板（本身不收錄，舊網址會轉到 cars/<id>.html）
 ├── cars/<id>.html         ★ 每台車的靜態內頁，由 build-seo.js 自動產生，不要手動修改
 ├── vercel.json            Vercel 轉址設定（舊車輛網址、舊聯絡頁）

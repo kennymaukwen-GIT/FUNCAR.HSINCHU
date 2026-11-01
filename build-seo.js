@@ -44,6 +44,32 @@ function carCard(car){
 }
 const grid = status => byStatus(status).map(carCard).join('') + '\n    ';
 
+// MINI Clubman 指南頁（mini-clubman-jcw-guide.html）用的車卡
+const isClubman = c => c.brand === 'mini' && /CLUBMAN/i.test(c.title + ' ' + (c.subtitle || ''));
+const clubmanGrid = status => CARS.filter(c => c.status === status && isClubman(c)).map(carCard).join('') + '\n    ';
+
+// 英文頁（en/）用的車卡：頁面有 <base href="../">，連結與照片路徑和中文頁相同
+function enCard(car){
+  const mi = car.specs && car.specs.mileage;
+  const miText = !mi || mi === '—' || mi === '洽詢' ? 'Ask us' : mi === '全新' ? 'New' : mi.replace(/\s*公里/, ' km');
+  const priceText = car.status === 'sold' ? '<strong>Sold</strong>'
+    : car.status === 'coming' ? 'Price: <strong>Pre-order</strong>'
+    : `Price: <strong>${car.price && car.price !== '電洽' ? esc(car.price) : 'Call us'}</strong>`;
+  const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
+  return `
+      <a href="${carUrl(car)}" class="car-card" data-brand="${esc(car.brand)}" hreflang="zh-TW">
+        <img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(titleFull)} for sale in Hsinchu, Taiwan" loading="lazy">
+        <div class="car-card-overlay">
+          <div class="car-card-title">${esc(titleFull)}</div>
+          <div class="car-card-info">
+            <span>Mileage: <strong>${esc(miText)}</strong></span>
+            <span>${priceText}</span>
+          </div>
+        </div>
+      </a>`;
+}
+const enGrid = status => byStatus(status).map(enCard).join('') + '\n    ';
+
 const BRAND_SEO_ALT = {
   'MINI': 'MINI 外匯車進口',
   'PORSCHE': '保時捷 Porsche 客製化尋車',
@@ -199,7 +225,8 @@ function carBody(c) {
     <section class="detail-intro">
       <h2>車輛介紹</h2>
       <p>${esc(intro)}</p>
-      <p>${trust}</p>
+      <p>${trust}</p>${isClubman(c) ? `
+      <p>想比較 Clubman 各年式、JCW 與 Cooper S 的差異，或了解末代 Untold Edition，請看 <a href="mini-clubman-jcw-guide.html">MINI Clubman JCW 外匯車購買指南</a>。</p>` : ''}
     </section>
 
     <div class="detail-specs">
@@ -322,6 +349,8 @@ ${rows.map(([k, v]) => `        <tr><th scope="row">${k}</th><td>${v}</td></tr>`
 const STATIC_PAGES = [
   ['', '1.0'], ['inventory.html', '0.9'], ['incoming.html', '0.8'], ['import-guide.html', '0.9'], ['services.html', '0.8'],
   ['sold.html', '0.7'], ['about.html', '0.7'], ['maintenance.html', '0.5'], ['contact.html', '0.6'],
+  ['import-tax-calculator.html', '0.8'], ['mini-clubman-jcw-guide.html', '0.8'],
+  ['en/', '0.8'], ['en/buying-a-car-in-taiwan.html', '0.8'],
 ];
 function buildSitemap() {
   const xmlEsc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -388,10 +417,17 @@ function buildLlmsTxt() {
 - [即將到港](${SITE}incoming.html)：已訂購、即將到台的車款，接受預訂
 - [已售車款](${SITE}sold.html)：歷年成交紀錄
 - [外匯車進口全攻略](${SITE}import-guide.html)：進口流程、費用組成、時程與常見問題
+- [外匯車進口稅費試算器](${SITE}import-tax-calculator.html)：依官方稅率試算關稅、貨物稅、營業稅，附公式、試算範例、奢侈稅門檻與每年牌照稅、公路養管費
+- [MINI Clubman JCW 外匯車購買指南](${SITE}mini-clubman-jcw-guide.html)：第二代 Clubman（F54）歷年改款、JCW 與 Cooper S 差異、末代 Untold Edition、購車檢查重點、在店車與成交紀錄
 - [估車收車服務](${SITE}services.html)：二手車估價、收購、換購折抵、到府收車
 - [保養資訊](${SITE}maintenance.html)：進口車保養建議
 - [關於我們](${SITE}about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
 - [聯絡我們](${SITE}contact.html)：地址、電話、地圖
+
+## English pages
+
+- [FUN CAR in English](${SITE}en/)：Import and used car dealer in Hsinchu for international residents; cars in stock, phone and LINE in English
+- [Buying a car in Taiwan as a foreigner](${SITE}en/buying-a-car-in-taiwan.html)：documents, registration, driver's licence, insurance, annual taxes, selling when you leave Taiwan
 
 ## 機器可讀資料
 
@@ -415,6 +451,10 @@ inject('inventory.html',  'data-car-grid="in-stock"', grid('in-stock'));
 inject('sold.html',       'data-car-grid="sold"',     grid('sold'));
 inject('incoming.html',   'data-car-grid="coming"',   grid('coming'));
 inject('about.html',      'data-fact-card',           factCard());
+inject('mini-clubman-jcw-guide.html', 'data-ssg="clubman-in-stock"', clubmanGrid('in-stock'));
+inject('mini-clubman-jcw-guide.html', 'data-ssg="clubman-sold"',     clubmanGrid('sold'));
+inject('en/index.html',   'data-ssg="en-in-stock"',   enGrid('in-stock'));
+inject('en/index.html',   'data-ssg="en-coming"',     enGrid('coming'));
 buildCarPages();
 buildSitemap();
 buildInventoryJson();
