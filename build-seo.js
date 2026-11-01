@@ -291,7 +291,6 @@ ${carJsonLd(c)}
 // 關於我們：公司資料一覽
 // ============================================================
 function factCard() {
-  const n = s => byStatus(s).length;
   const rows = [
     ['公司登記名稱', DEALER.legalName],
     ['品牌名稱', DEALER.name],
@@ -305,7 +304,6 @@ function factCard() {
     ['主力品牌', 'MINI、Mercedes-Benz／Mercedes-AMG、Porsche'],
     ['車況鑑定', 'Goo 官方鑑定專員在店實車鑑定；美規車款附 CARFAX 車輛歷史報告'],
     ['購車保障', '實車實價、第三方權威鑑定認證、無重大事故泡水保證、完整售後保固服務'],
-    ['網站公開車輛紀錄', `在店現車 ${n('in-stock')} 台、即將到港 ${n('coming')} 台、已售成交 ${n('sold')} 台（${TODAY} 更新）`],
     ['Google 評論', `${DEALER.googleRating} 星，共 ${DEALER.googleReviews} 則評論（${DEALER.googleAsOf}）・<a href="${DEALER.googleMaps}" target="_blank" rel="noopener">在 Google 地圖查看</a>`],
     ['8891 商家頁', `<a href="${DEALER.site8891}" target="_blank" rel="noopener">貿鑫國際有限公司</a>`],
   ];
