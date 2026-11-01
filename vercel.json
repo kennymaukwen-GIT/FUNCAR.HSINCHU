@@ -16,6 +16,11 @@
       ],
       "destination": "/cars/:id.html",
       "permanent": true
+    },
+    {
+      "source": "/import-tax-calculator.html",
+      "destination": "/import-guide.html",
+      "permanent": true
     }
   ]
 }

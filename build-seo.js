@@ -396,7 +396,7 @@ ${rows.map(([k, v]) => `        <tr><th scope="row">${k}</th><td>${v}</td></tr>`
 const STATIC_PAGES = [
   ['', '1.0'], ['inventory.html', '0.9'], ['incoming.html', '0.8'], ['import-guide.html', '0.9'], ['services.html', '0.8'],
   ['sold.html', '0.7'], ['about.html', '0.7'], ['maintenance.html', '0.5'], ['contact.html', '0.6'],
-  ['import-tax-calculator.html', '0.8'], ['guides.html', '0.8'],
+  ['guides.html', '0.8'],
   ...GUIDES.filter(g => fs.existsSync(g.file)).map(g => [g.file, '0.8']),
   ['en/', '0.8'], ['en/buying-a-car-in-taiwan.html', '0.8'],
 ];
@@ -465,7 +465,6 @@ function buildLlmsTxt() {
 - [即將到港](${SITE}incoming.html)：已訂購、即將到台的車款，接受預訂
 - [已售車款](${SITE}sold.html)：歷年成交紀錄
 - [外匯車進口全攻略](${SITE}import-guide.html)：進口流程、費用組成、時程與常見問題
-- [外匯車進口稅費試算器](${SITE}import-tax-calculator.html)：依官方稅率試算關稅、貨物稅、營業稅，附公式、試算範例、奢侈稅門檻與每年牌照稅、公路養管費
 - [車款購買指南總覽](${SITE}guides.html)：各車系的世代差異、規格、看車重點，附在店車與成交紀錄
 - [估車收車服務](${SITE}services.html)：二手車估價、收購、換購折抵、到府收車
 - [保養資訊](${SITE}maintenance.html)：進口車保養建議
