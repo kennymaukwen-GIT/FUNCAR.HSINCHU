@@ -143,8 +143,8 @@ function renderCarGrid(selector, status, limit) {
 
   container.innerHTML = cars.map(car => {
     const firstPhoto = photoUrl(car, 0);
-    const linkable = car.status !== 'sold';   // 已售車只有卡片、不連內頁
-    const href = `car-detail.html?id=${car.id}`;
+    const linkable = true;   // 每台車（含已售）都有靜態內頁
+    const href = carUrl(car);
     const tag = linkable ? 'a' : 'div';
     const mi = car.specs && car.specs.mileage;
     const miText = (mi && mi !== '—') ? mi : '洽詢';
@@ -172,106 +172,22 @@ function renderCarGrid(selector, status, limit) {
 }
 
 // ============================================
-// Render car detail page from URL ?id=
+// 車輛內頁
+// 每台車的內頁是 build-seo.js 產生的靜態 HTML（cars/<id>.html），
+// 內容已直接寫在頁面裡，這裡不再重繪。舊網址 car-detail.html?id=xxx 一律轉到靜態頁。
 // ============================================
 function renderCarDetail() {
   const wrap = document.querySelector('[data-car-detail]');
   if (!wrap || typeof CARS === 'undefined') return;
+  if (wrap.hasAttribute('data-static')) return;
 
   const id = new URLSearchParams(location.search).get('id');
-  const car = id ? findCar(id) : CARS[0];
-
-  if (!car) {
-    wrap.innerHTML = '<div style="padding:80px 0;text-align:center;color:var(--text-secondary)">找不到該車輛。<br><br><a href="inventory.html" class="btn btn-outline">返回在店車款</a></div>';
+  const car = id && findCar(id);
+  if (car) {
+    location.replace(carUrl(car));
     return;
   }
-
-  // Update page title + SEO meta (dynamic, per-car)
-  const brandZh = BRAND_ZH[car.brand] || '進口車';
-  const hasKw = /新竹|外匯|進口/.test(car.subtitle || '');
-  const region = hasKw ? '' : ' · 新竹外匯車';
-  document.title = `${car.title} ${car.subtitle}${region}｜FUN CAR 貿鑫國際車業`;
-
-  const ORIGIN = 'https://www.funcar-hsinchu.com.tw/';
-  const canonUrl = `${ORIGIN}car-detail.html?id=${encodeURIComponent(car.id)}`;
-  const imgAbs = ORIGIN + photoUrl(car, 0);
-  const spec = car.specs || {};
-  const clean = v => (v && v !== '—' && String(v).trim()) ? String(v).trim() : null;
-  const specStr = [clean(spec.year) && clean(spec.year) + '年式', clean(spec.mileage), clean(spec.transmission)].filter(Boolean).join('・');
-  const metaDesc = `貿鑫國際車業 FUN CAR｜${car.title} ${car.subtitle}${specStr ? '，' + specStr : ''}。新竹在地進口外匯車，提供實車照片與車況資訊，歡迎預約新竹展間賞車或線上洽詢 0922-782-597。`;
-
-  const setMeta = (sel, attr, val) => {
-    let el = document.head.querySelector(sel);
-    if (!el) { el = document.createElement('meta'); const [k, v] = attr; el.setAttribute(k, v); document.head.appendChild(el); }
-    el.setAttribute('content', val);
-  };
-  setMeta('meta[name="description"]', ['name', 'description'], metaDesc);
-  setMeta('meta[property="og:description"]', ['property', 'og:description'], metaDesc);
-  setMeta('meta[name="twitter:description"]', ['name', 'twitter:description'], metaDesc);
-  setMeta('meta[property="og:title"]', ['property', 'og:title'], document.title);
-  setMeta('meta[name="twitter:title"]', ['name', 'twitter:title'], document.title);
-  setMeta('meta[property="og:url"]', ['property', 'og:url'], canonUrl);
-  setMeta('meta[property="og:image"]', ['property', 'og:image'], imgAbs);
-  setMeta('meta[name="twitter:image"]', ['name', 'twitter:image'], imgAbs);
-  let canon = document.head.querySelector('link[rel="canonical"]');
-  if (!canon) { canon = document.createElement('link'); canon.setAttribute('rel', 'canonical'); document.head.appendChild(canon); }
-  canon.setAttribute('href', canonUrl);
-
-  const statusTextMap = { 'in-stock': '在店車款', 'sold': '已售出', 'coming': '即將到港' };
-  const backLinkMap = { 'in-stock': 'inventory.html', 'sold': 'sold.html', 'coming': 'incoming.html' };
-  const backLabelMap = { 'in-stock': '在店車款', 'sold': '已售車款', 'coming': '即將到港' };
-  const priceLabelMap = { 'in-stock': 'PRICE', 'sold': 'STATUS', 'coming': 'ETA' };
-  const priceShowMap = {
-    'in-stock': car.price === '電洽' ? '$ 電洽' : car.price,
-    'sold': '已售出',
-    'coming': '接受預訂',
-  };
-
-  const slidesHtml = car.photos.map((_, i) =>
-    `<div class="slide${i === 0 ? ' active' : ''}"><img src="${photoUrl(car, i)}" alt="${car.title} ${car.subtitle} ${brandZh}新竹外匯車 實車照片 ${i+1}"></div>`
-  ).join('');
-
-  const dotsHtml = car.photos.map((_, i) =>
-    `<span class="dot${i === 0 ? ' active' : ''}"></span>`
-  ).join('');
-
-  const thumbsHtml = car.photos.map((_, i) =>
-    `<div class="thumbnail${i === 0 ? ' active' : ''}"><img src="${photoUrl(car, i)}" alt=""></div>`
-  ).join('');
-
-  // 若該車有對應 FB 貼文,顯示「看更多實拍」按鈕(無資料則不顯示)
-  const fbBtn = car.fbUrl
-    ? `<div class="detail-fb"><a href="${car.fbUrl}" target="_blank" rel="noopener" class="btn btn-outline">看更多實拍（Facebook）</a></div>`
-    : '';
-
-  wrap.innerHTML = `
-    <div class="detail-breadcrumb">
-      <a href="index.html">首頁</a> / <a href="${backLinkMap[car.status]}">${backLabelMap[car.status]}</a> / ${car.title}
-    </div>
-    <h1 class="detail-title">${car.title} ${car.subtitle}</h1>
-
-    <div class="detail-media">
-      <div class="slideshow">
-        <div class="slideshow-slides">${slidesHtml}</div>
-        <div class="slideshow-dots">${dotsHtml}</div>
-      </div>
-      <div class="thumbnails">${thumbsHtml}</div>
-    </div>
-    ${fbBtn}
-
-    <div class="detail-specs">
-      <div class="section-eyebrow" style="margin-bottom: 12px;">SPECIFICATIONS</div>
-      <h2 style="font-weight: 200; font-size: 36px;">車輛<strong style="font-weight:600;">規格</strong></h2>
-      <div class="spec-list">
-        <div class="spec-row"><span class="spec-key">車輛年份</span><span class="spec-val">${car.specs.year}</span></div>
-        <div class="spec-row"><span class="spec-key">車輛型號</span><span class="spec-val">${car.title} ${car.subtitle}</span></div>
-        <div class="spec-row"><span class="spec-key">顏色</span><span class="spec-val">${car.specs.exteriorColor}</span></div>
-        <div class="spec-row"><span class="spec-key">里程數</span><span class="spec-val">${car.specs.mileage}</span></div>
-        <div class="spec-row"><span class="spec-key">車源地</span><span class="spec-val">${car.specs.origin}</span></div>
-        <div class="spec-row"><span class="spec-key">鑑定狀態</span><span class="spec-val">${statusTextMap[car.status]}</span></div>
-      </div>
-    </div>
-  `;
+  wrap.innerHTML = '<div style="padding:80px 0;text-align:center;color:var(--text-secondary)">找不到該車輛。<br><br><a href="inventory.html" class="btn btn-outline">返回在店車款</a></div>';
 }
 
 // ============================================
@@ -399,7 +315,7 @@ function renderComingFeatures(selector) {
   }
 
   container.innerHTML = cars.map(car => `
-    <a href="car-detail.html?id=${car.id}" class="coming-feature">
+    <a href="${carUrl(car)}" class="coming-feature">
       <div class="coming-feature-media">
         <img src="${photoUrl(car, 0)}" alt="${car.title}">
       </div>
@@ -488,7 +404,7 @@ function initFinder() {
 
   const go = () => {
     if (modelEl._value) {
-      location.href = `car-detail.html?id=${encodeURIComponent(modelEl._value)}`;
+      location.href = `cars/${encodeURIComponent(modelEl._value)}.html`;
     } else if (brandEl._value) {
       location.href = `inventory.html?brand=${encodeURIComponent(brandEl._value)}`;
     } else {

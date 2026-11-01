@@ -774,6 +774,11 @@ function photoUrl(car, index) {
   return 'images/' + encodeURIComponent(car.folder).replace(/%2F/g, '/') + '/' + encodeURIComponent(filename);
 }
 
+// 每台車（含已售）都有靜態內頁，由 build-seo.js 產生在 cars/<id>.html
+function carUrl(car) {
+  return 'cars/' + car.id + '.html';
+}
+
 function carsByStatus(status) {
   return CARS.filter(c => c.status === status);
 }

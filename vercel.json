@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    {
+      "source": "/models.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/car-detail.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "(?<id>[a-z0-9-]+)"
+        }
+      ],
+      "destination": "/cars/:id.html",
+      "permanent": true
+    }
+  ]
+}

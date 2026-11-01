@@ -10,9 +10,15 @@
 ├── css/style.css          全站樣式
 ├── js/cars.js             ★ 車輛資料庫（新增 / 修改車輛只改這個檔）
 ├── js/main.js             頁面邏輯（卡片、輪播、品牌展示…）
-├── build-seo.js           SEO 預渲染：把車輛卡片烤進 HTML（改完 cars.js 後執行）
+├── build-seo.js           SEO 預渲染與自動產生檔案（改完 cars.js 後執行）
+├── car-detail.html        車輛內頁的共用模板（本身不收錄，舊網址會轉到 cars/<id>.html）
+├── cars/<id>.html         ★ 每台車的靜態內頁，由 build-seo.js 自動產生，不要手動修改
+├── vercel.json            Vercel 轉址設定（舊車輛網址、舊聯絡頁）
+├── llms.txt               給 AI 讀的網站摘要，自動產生
+├── inventory.json         機器可讀的完整車輛資料，自動產生
 ├── server.py              本機預覽用的簡易伺服器
-├── sitemap.xml / robots.txt
+├── sitemap.xml            網站地圖，自動產生
+├── robots.txt
 ├── videos/hero.mp4        首頁背景影片
 └── images/
     ├── logo.png           網站 logo
@@ -47,10 +53,16 @@
 },
 ```
 
-4. 執行 `node build-seo.js`，把卡片重新烤進 `index.html`、`inventory.html`、`sold.html`、`incoming.html`。
+4. 執行 `node build-seo.js`。它會一次更新：
+   - 首頁、在店、已售、即將到港頁的車卡
+   - `cars/<id>.html` 每台車的靜態內頁（含結構化資料）
+   - 關於我們頁的「公司資料一覽」表（車輛數量會自動更新）
+   - `sitemap.xml`、`llms.txt`、`inventory.json`
 5. 若有改 `css/style.css` 或 `js/cars.js`，把各 HTML 裡的 `?v=` 版本號 +1，讓瀏覽器重新下載。
 
-車子賣掉時只要把 `status` 改成 `'sold'`、`price` 改成 `'已售出'`，照片資料夾不用搬。
+車子賣掉時只要把 `status` 改成 `'sold'`、`price` 改成 `'已售出'`，再執行 `node build-seo.js`。照片資料夾不用搬，車輛內頁會自動改成成交紀錄。
+
+公司資料（統一編號、地址、營業時間、Google 地圖、8891 連結）集中在 `build-seo.js` 開頭的 `DEALER` 設定，改一次全站同步。
 
 ## 本機預覽
 

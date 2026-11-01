@@ -2053,3 +2053,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .git-grid { grid-template-columns: 1fr; gap: 36px; }
   .git-media .map-embed { height: 360px; }
 }
+
+/* ============================================
+   車輛靜態內頁：介紹、聯絡按鈕、相關車款（build-seo.js 產生）
+   ============================================ */
+.detail-intro { margin-top: 56px; }
+.detail-intro h2, .detail-related h2 { font-weight: 300; font-size: 28px; margin-bottom: 20px; }
+.detail-intro p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 12px; }
+.detail-cta { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 48px; }
+.detail-related { margin-top: 88px; }
+
+/* 關於我們：公司資料一覽 */
+.company-facts { padding-top: 40px; padding-bottom: 80px; }
+.fact-table { width: 100%; max-width: 880px; margin: 0 auto; border-collapse: collapse; font-size: 15px; }
+.fact-table th, .fact-table td { padding: 16px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; line-height: 1.7; }
+.fact-table th { width: 28%; color: var(--text-muted); font-weight: 400; letter-spacing: 1px; }
+.fact-table td { color: var(--text-primary); }
+.fact-table a, .reviews-source a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+.reviews-source { text-align: center; margin-top: 12px; }
+@media (max-width: 640px) { .fact-table th { width: 36%; } .fact-table th, .fact-table td { padding: 12px 8px; font-size: 14px; } }
+
+/* 選單項目變多，小螢幕可捲動 */
+.menu-panel { overflow-y: auto; }

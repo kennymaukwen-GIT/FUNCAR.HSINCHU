@@ -1,0 +1,78 @@
+# FUN CAR 貿鑫國際車業
+
+> 新竹在地進口外匯車商。公司登記名稱貿鑫國際有限公司，統一編號 85122378，2019 年 7 月設立。專營外匯車進口引進、在店現車買賣、二手車估價收購，主力品牌為 MINI、Mercedes-Benz／Mercedes-AMG、Porsche。每輛車提供 Goo 官方在店鑑定，美規車款另附 CARFAX 車輛歷史報告。
+
+## 公司資料
+
+- 展間地址：新竹市北區吉羊路22巷55之3號
+- 電話：0922-782-597
+- Email：michelle@maukwen.com.tw
+- 營業時間：週一至週日 09:00–23:00
+- Google 地圖與評論：https://maps.app.goo.gl/r1JD8GTU861ZrX2D7
+- 8891 商家頁：https://www.8891.com.tw/findBuz-info-10987.html
+- Facebook：https://www.facebook.com/p/FUN-CAR-%E8%B2%BF%E9%91%AB%E5%9C%8B%E9%9A%9B%E8%BB%8A%E6%A5%AD-100063469527149/
+- Instagram：https://www.instagram.com/fun_car_hsinchu88/
+
+## 主要頁面
+
+- [在店車款](https://www.funcar-hsinchu.com.tw/inventory.html)：目前在新竹展間的現車
+- [即將到港](https://www.funcar-hsinchu.com.tw/incoming.html)：已訂購、即將到台的車款，接受預訂
+- [已售車款](https://www.funcar-hsinchu.com.tw/sold.html)：歷年成交紀錄
+- [外匯車進口全攻略](https://www.funcar-hsinchu.com.tw/import-guide.html)：進口流程、費用組成、時程與常見問題
+- [估車收車服務](https://www.funcar-hsinchu.com.tw/services.html)：二手車估價、收購、換購折抵、到府收車
+- [保養資訊](https://www.funcar-hsinchu.com.tw/maintenance.html)：進口車保養建議
+- [關於我們](https://www.funcar-hsinchu.com.tw/about.html)：專營車款、第三方鑑定方式、公司資料一覽、客戶評價
+- [聯絡我們](https://www.funcar-hsinchu.com.tw/contact.html)：地址、電話、地圖
+
+## 機器可讀資料
+
+- [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-01）
+
+## 在店現車（18 台）
+
+- [2026 BENZ GLC43 AMG COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-coupe-white-2026.html)：2026 年式、外觀極白、里程全新
+- [2024 PORSCHE MACAN](https://www.funcar-hsinchu.com.tw/cars/porsche-macan-2024.html)：2024 年式、外觀蠟灰色、里程 24,000 公里
+- [2021 BENZ C180 COUPE AMG](https://www.funcar-hsinchu.com.tw/cars/benz-c180-coupe-amg-2021.html)：2021 年式、外觀極白
+- [2023 MINI COOPER JCW](https://www.funcar-hsinchu.com.tw/cars/mini-cooper-jcw-2023.html)：2023 年式、外觀午夜黑、里程 25,000 公里
+- [2020 PORSCHE 718 CAYMAN S](https://www.funcar-hsinchu.com.tw/cars/porsche-718-cayman-s-2020.html)：2020 年式、外觀御林軍紅、里程 13,000 公里、總代理車源
+- [2024 BENZ GLC300 COUPE AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glc300-coupe-white-2024.html)：2024 年式、外觀瓷釉白、里程 23,000 公里、總代理車源
+- [2023 MINI CLUBMAN JCW ALL4](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-red-2023.html)：2023 年式、外觀辣椒紅、里程 8,000 公里
+- [2024 MINI CLUBMAN JCW UNTOLD EDITION](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-untold-black-2024.html)：2024 年式、外觀黑、里程 11,000 公里
+- [2024 BENZ GLB35 AMG 4MATIC](https://www.funcar-hsinchu.com.tw/cars/benz-glb35-amg-2024.html)：2024 年式、外觀黑、里程 14,000 公里
+- [2022 BENZ GT43 AMG 4 DOOR COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-gt43-amg-2022.html)：2022 年式、外觀極白、里程 20,000 公里
+- [BENZ GLC43 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-black.html)：外觀黑
+- [MINI COUNTRYMAN JCW](https://www.funcar-hsinchu.com.tw/cars/mini-countryman-jcw-white.html)：外觀白
+- [MINI CLUBMAN JCW](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-black-red.html)：外觀黑紅
+- [2023 MINI CLUBMAN JCW ALL4](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-green.html)：2023 年式、外觀反叛綠、里程 26,000 公里
+- [2024 MINI CLUBMAN S UNTOLD EDITION](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-sage.html)：2024 年式、外觀灰藍、里程 7,000 公里
+- [2024 MINI CLUBMAN JCW ALL4](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-white.html)：2024 年式、外觀北極白、里程 4,500 公里
+- [2017 PORSCHE 718 BOXSTER S](https://www.funcar-hsinchu.com.tw/cars/porsche-718-boxster-s-2017.html)：2017 年式、外觀極白、里程 37,000 公里
+- [2024 MINI CABRIO JCW](https://www.funcar-hsinchu.com.tw/cars/mini-cabrio-jcw-2024.html)：2024 年式、外觀北極白、里程 15,000 公里
+
+## 即將到港（2 台）
+
+- [2023 MINI CABRIO SEASIDE S](https://www.funcar-hsinchu.com.tw/cars/mini-cabrio-seaside-2023.html)：2023 年式
+- [2025 BENZ GLC 43 AMG · BLACK](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-black-2025.html)：2025 年式、外觀黑色、9G-TRONIC 變速箱
+
+## 成交紀錄（20 台）
+
+- [2024 MINI CLUBMAN S UNTOLD EDITION](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-untold-2024.html)：2024 年式
+- [2025 BENZ E200 LUXURY](https://www.funcar-hsinchu.com.tw/cars/benz-e200-luxury-2025.html)：2025 年式、9G-TRONIC 變速箱
+- [BENZ GLC 300](https://www.funcar-hsinchu.com.tw/cars/benz-glc300-black.html)：外觀黑色、9G-TRONIC 變速箱
+- [MINI CLUBMAN JCW](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-black.html)：外觀黑色
+- [2024 MINI CLUBMAN JCW ALL4](https://www.funcar-hsinchu.com.tw/cars/mini-clubman-jcw-all4-2024.html)：2024 年式
+- [2023 BENZ CLA 45s AMG](https://www.funcar-hsinchu.com.tw/cars/benz-cla45s-amg-2023.html)：2023 年式
+- [2025 BENZ GLC 43 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-white-2025.html)：2025 年式、外觀白色、9G-TRONIC 變速箱
+- [BENZ E 200](https://www.funcar-hsinchu.com.tw/cars/benz-e200.html)：9G-TRONIC 變速箱
+- [BENZ E53 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-e53.html)：9G-TRONIC 變速箱
+- [BENZ GLB 250](https://www.funcar-hsinchu.com.tw/cars/benz-glb250.html)
+- [BENZ GLB 35 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glb35-amg.html)
+- [BENZ GLC 43 COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-coupe.html)：9G-TRONIC 變速箱
+- [BENZ GLE 450](https://www.funcar-hsinchu.com.tw/cars/benz-gle450-black.html)：外觀黑色、9G-TRONIC 變速箱
+- [BENZ GLE 450 COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-gle450-coupe.html)：9G-TRONIC 變速箱
+- [BENZ GLE 450](https://www.funcar-hsinchu.com.tw/cars/benz-gle450-white.html)：外觀白色、9G-TRONIC 變速箱
+- [BENZ GLE 53 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-gle53-amg.html)：9G-TRONIC 變速箱
+- [BENZ GT 53 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-gt53-amg.html)
+- [BENZ GLC 300 COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-glc300-coupe.html)：9G-TRONIC 變速箱
+- [PORSCHE MACAN](https://www.funcar-hsinchu.com.tw/cars/porsche-macan.html)：PDK 變速箱
+- [PORSCHE MACAN S](https://www.funcar-hsinchu.com.tw/cars/porsche-macan-s.html)：PDK 變速箱
