@@ -154,7 +154,7 @@ function renderCarGrid(selector, status, limit) {
     const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
     return `
       <${tag} ${linkable ? `href="${href}"` : ''} class="car-card" data-brand="${car.brand}">
-        <img class="car-card-img" src="${firstPhoto}" alt="${car.title} ${BRAND_ZH[car.brand] || ''} 新竹外匯車" loading="lazy">
+        <img class="car-card-img" src="${firstPhoto}" alt="${titleFull}${car.specs && car.specs.exteriorColor && car.specs.exteriorColor !== '—' ? ' ' + car.specs.exteriorColor : ''}" loading="lazy">
         <div class="car-card-overlay">
           <div class="car-card-title">${titleFull}</div>
           <div class="car-card-info">

@@ -46,7 +46,7 @@
 
 ## 機器可讀資料
 
-- [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-01）
+- [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-18）
 
 ## 在店現車（18 台）
 

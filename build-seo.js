@@ -20,7 +20,8 @@ const carUrl = car => 'cars/' + car.id + '.html';
 const BRAND_ZH = { bmw: 'BMW', porsche: '保時捷', benz: '賓士', mini: 'MINI', other: '進口車' };
 function carCard(car){
   const href = carUrl(car);
-  const alt = `${car.title} ${BRAND_ZH[car.brand]||''} 新竹外匯車`;
+  const color = car.specs && car.specs.exteriorColor && car.specs.exteriorColor !== '—' ? car.specs.exteriorColor : '';
+  const alt = (car.title + (car.subtitle ? ' ' + car.subtitle : '')) + (color ? ' ' + color : '');
   const mi = car.specs && car.specs.mileage;
   const miText = (mi && mi !== '—') ? mi : '洽詢';
   const priceText = car.status==='sold' ? '<strong>成交</strong>'
@@ -74,6 +75,22 @@ function toggleSection(file, id, hide) {
   s = s.replace(re, `<section class="guide-section" id="${id}"${hide ? ' hidden' : ''}>`);
   fs.writeFileSync(file, s);
 }
+// 列表頁的 ItemList 結構化資料：放在 <script type="application/ld+json" data-ssg-ld="..."> 裡
+function itemListLd(name, url, cars) {
+  return JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'ItemList', name, url: SITE + url,
+    numberOfItems: cars.length,
+    itemListElement: cars.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + carUrl(c), name: fullName(c) })),
+  }, null, 2);
+}
+function injectLd(file, key, json) {
+  let s = fs.readFileSync(file, 'utf8');
+  const re = new RegExp('(<script type="application/ld\\+json" data-ssg-ld="' + key + '">)[\\s\\S]*?(</script>)');
+  if (!re.test(s)) { console.log('  SKIP (LD 容器找不到):', file, key); return; }
+  s = s.replace(re, `$1\n${json}\n$2`);
+  fs.writeFileSync(file, s);
+  console.log('  baked', file.padEnd(16), 'ld:' + key);
+}
 function bakeGuides() {
   for (const g of GUIDES) {
     if (!fs.existsSync(g.file)) { console.log('  SKIP (檔案不存在):', g.file); continue; }
@@ -105,7 +122,7 @@ function enCard(car){
   const titleFull = car.title + (car.subtitle ? ' ' + car.subtitle : '');
   return `
       <a href="${carUrl(car)}" class="car-card" data-brand="${esc(car.brand)}" hreflang="zh-TW">
-        <img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(titleFull)} for sale in Hsinchu, Taiwan" loading="lazy">
+        <img class="car-card-img" src="${photoUrl(car,0)}" alt="${esc(titleFull)}" loading="lazy">
         <div class="car-card-overlay">
           <div class="car-card-title">${esc(titleFull)}</div>
           <div class="car-card-info">
@@ -205,7 +222,7 @@ function carDescription(c) {
   return `${base}，新竹展間現車。FUN CAR 貿鑫國際車業，實車照片與規格一次看，歡迎預約賞車。`;
 }
 function carTitle(c) {
-  const tail = c.status === 'sold' ? '成交紀錄' : c.status === 'coming' ? '即將到港接受預訂' : '新竹外匯車現車';
+  const tail = c.status === 'sold' ? '成交紀錄' : c.status === 'coming' ? '即將到港接受預訂' : '新竹展間現車';
   return `${fullName(c)}｜${tail}－FUN CAR 貿鑫國際車業`;
 }
 
@@ -221,7 +238,7 @@ function carBody(c) {
   const brandZh = BRAND_ZH[c.brand] || '進口車';
   const name = fullName(c);
   const slides = c.photos.map((_, i) =>
-    `<div class="slide${i === 0 ? ' active' : ''}"><img src="${photoUrl(c, i)}" alt="${esc(name)} ${brandZh}新竹外匯車 實車照片 ${i + 1}"${i ? ' loading="lazy"' : ''}></div>`).join('');
+    `<div class="slide${i === 0 ? ' active' : ''}"><img src="${photoUrl(c, i)}" alt="${esc(name)} ${i === 0 ? 'FUN CAR 新竹展間實拍' : '實車照片 ' + (i + 1)}"${i ? ' loading="lazy"' : ''}></div>`).join('');
   const dots = c.photos.map((_, i) => `<span class="dot${i === 0 ? ' active' : ''}"></span>`).join('');
   const thumbs = c.photos.map((_, i) => `<div class="thumbnail${i === 0 ? ' active' : ''}"><img src="${photoUrl(c, i)}" alt="" loading="lazy"></div>`).join('');
   const fb = c.fbUrl ? `\n    <div class="detail-fb"><a href="${esc(c.fbUrl)}" target="_blank" rel="noopener" class="btn btn-outline">看更多實拍（Facebook）</a></div>` : '';
@@ -310,6 +327,7 @@ function carJsonLd(c) {
   if (clean(sp.exteriorColor)) car.color = sp.exteriorColor;
   if (clean(sp.transmission)) car.vehicleTransmission = sp.transmission;
   if (clean(sp.fuel)) car.fuelType = sp.fuel;
+  car.itemCondition = clean(sp.mileage) === '全新' ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition';
   const priceNum = c.status === 'in-stock' && c.price && /\d/.test(c.price) ? Number(c.price.replace(/[^\d]/g, '')) : null;
   if (priceNum) car.offers = { '@type': 'Offer', price: priceNum, priceCurrency: 'TWD', availability: 'https://schema.org/InStock', seller: { '@id': SITE + '#dealer' } };
   const st = STATUS[c.status];
@@ -503,6 +521,8 @@ inject('inventory.html',  'data-ssg="inventory-coming"', grid('coming'));
 inject('about.html',      'data-fact-card',           factCard());
 bakeGuides();
 inject('guides.html',     'data-ssg="guide-list"',    guideList());
+injectLd('inventory.html', 'inventory', itemListLd('FUN CAR 貿鑫國際車業 在店與即將到港車款', 'inventory.html', [...byStatus('in-stock'), ...byStatus('coming')]));
+injectLd('sold.html',      'sold',      itemListLd('FUN CAR 貿鑫國際車業 成交紀錄', 'sold.html', byStatus('sold')));
 inject('services.html',   'data-ssg="sell-sold"',     byStatus('sold').slice(0, 8).map(carCard).join('') + '\n    ');
 inject('en/index.html',   'data-ssg="en-in-stock"',   enGrid('in-stock'));
 inject('en/index.html',   'data-ssg="en-coming"',     enGrid('coming'));
