@@ -20,6 +20,19 @@ const CARS = [
   // ============ 在店車款 ============
 
   {
+    id: 'landrover-evoque-p200-2024',
+    status: 'in-stock',
+    brand: 'other',
+    title: '2024 RANGE ROVER EVOQUE',
+    subtitle: 'P200 DYNAMIC SE AWD 小改款',
+    folder: 'cars/other/landrover-evoque-p200-2024',
+    photos: ['01.jpg'],
+    specs: { year: '2024', mileage: '29,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: 'Arroios 灰', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1Ch29bDJ2k/',
+  },
+
+  {
     id: 'benz-gla250-amg-2023',
     status: 'in-stock',
     brand: 'benz',

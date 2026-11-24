@@ -48,8 +48,9 @@
 
 - [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-24）
 
-## 在店現車（23 台）
+## 在店現車（24 台）
 
+- [2024 RANGE ROVER EVOQUE P200 DYNAMIC SE AWD 小改款](https://www.funcar-hsinchu.com.tw/cars/landrover-evoque-p200-2024.html)：2024 年式、外觀Arroios 灰、里程 29,000 公里
 - [2023 BENZ GLA250 AMG 4MATIC 原廠 CPO 認證](https://www.funcar-hsinchu.com.tw/cars/benz-gla250-amg-2023.html)：2023 年式、外觀白、里程 16,000 公里
 - [2023 BENZ E350 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-e350-amg-2023.html)：2023 年式、外觀鑽石白、里程 23,000 公里
 - [2026 BENZ GLC43 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-black-2026.html)：2026 年式、外觀耀石黑

@@ -25,6 +25,25 @@
   "priceNote": "價格為「電洽」的車輛請來電洽詢。",
   "cars": [
     {
+      "id": "landrover-evoque-p200-2024",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/landrover-evoque-p200-2024.html",
+      "status": "in-stock",
+      "brand": null,
+      "name": "2024 RANGE ROVER EVOQUE P200 DYNAMIC SE AWD 小改款",
+      "year": "2024",
+      "mileage": "29,000 公里",
+      "mileageKm": 29000,
+      "exteriorColor": "Arroios 灰",
+      "transmission": "自排",
+      "fuel": "汽油",
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/other/landrover-evoque-p200-2024/01.jpg"
+      ]
+    },
+    {
       "id": "benz-gla250-amg-2023",
       "url": "https://www.funcar-hsinchu.com.tw/cars/benz-gla250-amg-2023.html",
       "status": "in-stock",
