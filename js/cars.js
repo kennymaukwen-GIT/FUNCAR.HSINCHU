@@ -20,6 +20,71 @@ const CARS = [
   // ============ 在店車款 ============
 
   {
+    id: 'benz-gla250-amg-2023',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2023 BENZ GLA250',
+    subtitle: 'AMG 4MATIC 原廠 CPO 認證',
+    folder: 'cars/benz/benz-gla250-amg-2023',
+    photos: ['01.jpg'],
+    specs: { year: '2023', mileage: '16,000 公里', transmission: '自排', fuel: '—', location: '新竹', origin: '—', exteriorColor: '白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1CfUqzLwzN/',
+  },
+
+  {
+    id: 'benz-e350-amg-2023',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2023 BENZ E350',
+    subtitle: 'AMG',
+    folder: 'cars/benz/benz-e350-amg-2023',
+    photos: ['01.jpg'],
+    specs: { year: '2023', mileage: '23,000 公里', transmission: '自排', fuel: '—', location: '新竹', origin: '—', exteriorColor: '鑽石白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1DpR3SFCsu/',
+  },
+
+  {
+    id: 'benz-glc43-amg-black-2026',
+    status: 'in-stock',
+    brand: 'benz',
+    title: '2026 BENZ GLC43',
+    subtitle: 'AMG',
+    folder: 'cars/benz/benz-glc43-amg-black-2026',
+    photos: ['01.jpg'],
+    specs: { year: '2026', mileage: '—', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '耀石黑', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1bmQv9E2Zp/',
+  },
+
+  {
+    id: 'porsche-macan-black-2024',
+    status: 'in-stock',
+    brand: 'porsche',
+    title: '2024 PORSCHE MACAN',
+    subtitle: '2.0',
+    folder: 'cars/porsche/porsche-macan-black-2024',
+    photos: ['01.jpg'],
+    specs: { year: '2024', mileage: '15,000 公里', transmission: '自排', fuel: '汽油', location: '新竹', origin: '—', exteriorColor: '金屬墨玉黑', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1HBdWa1y7x/',
+  },
+
+  {
+    id: 'tesla-model-y-rwd-2024',
+    status: 'in-stock',
+    brand: 'other',
+    title: '2024 TESLA MODEL Y',
+    subtitle: 'RWD EAP',
+    folder: 'cars/other/tesla-model-y-rwd-2024',
+    photos: ['01.jpg'],
+    specs: { year: '2024', mileage: '21,000 公里', transmission: '單速', fuel: '電動', location: '新竹', origin: '—', exteriorColor: '珍珠白', interiorColor: '—' },
+    price: '電洽',
+    fbUrl: 'https://www.facebook.com/share/p/1CkPrdbYJH/',
+  },
+
+  {
     id: 'benz-glc43-amg-coupe-white-2026',
     status: 'in-stock',
     brand: 'benz',

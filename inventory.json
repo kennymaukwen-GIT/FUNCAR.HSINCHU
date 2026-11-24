@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-24",
   "dealer": {
     "name": "FUN CAR 貿鑫國際車業",
     "legalName": "貿鑫國際有限公司",
@@ -24,6 +24,101 @@
   },
   "priceNote": "價格為「電洽」的車輛請來電洽詢。",
   "cars": [
+    {
+      "id": "benz-gla250-amg-2023",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/benz-gla250-amg-2023.html",
+      "status": "in-stock",
+      "brand": "Mercedes-Benz",
+      "name": "2023 BENZ GLA250 AMG 4MATIC 原廠 CPO 認證",
+      "year": "2023",
+      "mileage": "16,000 公里",
+      "mileageKm": 16000,
+      "exteriorColor": "白",
+      "transmission": "自排",
+      "fuel": null,
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/benz/benz-gla250-amg-2023/01.jpg"
+      ]
+    },
+    {
+      "id": "benz-e350-amg-2023",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/benz-e350-amg-2023.html",
+      "status": "in-stock",
+      "brand": "Mercedes-Benz",
+      "name": "2023 BENZ E350 AMG",
+      "year": "2023",
+      "mileage": "23,000 公里",
+      "mileageKm": 23000,
+      "exteriorColor": "鑽石白",
+      "transmission": "自排",
+      "fuel": null,
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/benz/benz-e350-amg-2023/01.jpg"
+      ]
+    },
+    {
+      "id": "benz-glc43-amg-black-2026",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-black-2026.html",
+      "status": "in-stock",
+      "brand": "Mercedes-Benz",
+      "name": "2026 BENZ GLC43 AMG",
+      "year": "2026",
+      "mileage": null,
+      "mileageKm": null,
+      "exteriorColor": "耀石黑",
+      "transmission": "自排",
+      "fuel": "汽油",
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/benz/benz-glc43-amg-black-2026/01.jpg"
+      ]
+    },
+    {
+      "id": "porsche-macan-black-2024",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/porsche-macan-black-2024.html",
+      "status": "in-stock",
+      "brand": "Porsche",
+      "name": "2024 PORSCHE MACAN 2.0",
+      "year": "2024",
+      "mileage": "15,000 公里",
+      "mileageKm": 15000,
+      "exteriorColor": "金屬墨玉黑",
+      "transmission": "自排",
+      "fuel": "汽油",
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/porsche/porsche-macan-black-2024/01.jpg"
+      ]
+    },
+    {
+      "id": "tesla-model-y-rwd-2024",
+      "url": "https://www.funcar-hsinchu.com.tw/cars/tesla-model-y-rwd-2024.html",
+      "status": "in-stock",
+      "brand": null,
+      "name": "2024 TESLA MODEL Y RWD EAP",
+      "year": "2024",
+      "mileage": "21,000 公里",
+      "mileageKm": 21000,
+      "exteriorColor": "珍珠白",
+      "transmission": "單速",
+      "fuel": "電動",
+      "origin": null,
+      "location": "新竹",
+      "price": "電洽",
+      "images": [
+        "https://www.funcar-hsinchu.com.tw/images/cars/other/tesla-model-y-rwd-2024/01.jpg"
+      ]
+    },
     {
       "id": "benz-glc43-amg-coupe-white-2026",
       "url": "https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-coupe-white-2026.html",

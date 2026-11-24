@@ -46,10 +46,15 @@
 
 ## 機器可讀資料
 
-- [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-18）
+- [完整車輛資料 inventory.json](https://www.funcar-hsinchu.com.tw/inventory.json)：所有車輛的狀態、規格、價格說明與照片網址，每次網站更新時同步產生（最後更新 2026-11-24）
 
-## 在店現車（18 台）
+## 在店現車（23 台）
 
+- [2023 BENZ GLA250 AMG 4MATIC 原廠 CPO 認證](https://www.funcar-hsinchu.com.tw/cars/benz-gla250-amg-2023.html)：2023 年式、外觀白、里程 16,000 公里
+- [2023 BENZ E350 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-e350-amg-2023.html)：2023 年式、外觀鑽石白、里程 23,000 公里
+- [2026 BENZ GLC43 AMG](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-black-2026.html)：2026 年式、外觀耀石黑
+- [2024 PORSCHE MACAN 2.0](https://www.funcar-hsinchu.com.tw/cars/porsche-macan-black-2024.html)：2024 年式、外觀金屬墨玉黑、里程 15,000 公里
+- [2024 TESLA MODEL Y RWD EAP](https://www.funcar-hsinchu.com.tw/cars/tesla-model-y-rwd-2024.html)：2024 年式、外觀珍珠白、里程 21,000 公里、單速 變速箱
 - [2026 BENZ GLC43 AMG COUPE](https://www.funcar-hsinchu.com.tw/cars/benz-glc43-amg-coupe-white-2026.html)：2026 年式、外觀極白、里程全新
 - [2024 PORSCHE MACAN](https://www.funcar-hsinchu.com.tw/cars/porsche-macan-2024.html)：2024 年式、外觀蠟灰色、里程 24,000 公里
 - [2021 BENZ C180 COUPE AMG](https://www.funcar-hsinchu.com.tw/cars/benz-c180-coupe-amg-2021.html)：2021 年式、外觀極白
